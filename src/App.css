@@ -1,0 +1,9598 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700&family=Caveat:wght@500;600&display=swap");
+
+:root {
+  --paper: #eee8da;
+  --paper-light: #f7f1e4;
+  --ink: #1e1d1a;
+  --muted: #706b61;
+  --gold: #a87318;
+  --gold-light: #c29a58;
+  --line: rgba(60, 53, 42, 0.2);
+  --dark: #29251f;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #27231e;
+  color: var(--ink);
+  font-family: "Inter", sans-serif;
+  overflow: hidden;
+}
+
+button,
+a {
+  font: inherit;
+}
+
+button {
+  border: none;
+}
+
+/* =====================================================
+   MAIN PORTFOLIO
+===================================================== */
+
+.portfolio-shell {
+  width: 100vw;
+  height: 100vh;
+
+  position: relative;
+
+  background:
+    radial-gradient(
+      circle at 15% 20%,
+      rgba(255, 255, 255, 0.06),
+      transparent 25%
+    ),
+    radial-gradient(
+      circle at 85% 80%,
+      rgba(0, 0, 0, 0.3),
+      transparent 30%
+    ),
+    #29251f;
+
+  overflow: hidden;
+}
+
+.desk-texture {
+  position: absolute;
+  inset: 0;
+
+  pointer-events: none;
+
+  opacity: 0.35;
+
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.018) 0,
+      rgba(255, 255, 255, 0.018) 1px,
+      transparent 1px,
+      transparent 4px
+    );
+}
+
+/* =====================================================
+   NOTEBOOK SCROLL
+===================================================== */
+
+.notebook-scroll {
+  position: relative;
+  z-index: 2;
+
+  margin-left: 148px;
+
+  width: calc(100vw - 178px);
+
+  height: 100vh;
+
+  overflow-y: auto;
+
+  scroll-snap-type: y mandatory;
+
+  scroll-behavior: smooth;
+
+  scrollbar-width: none;
+}
+
+.notebook-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* =====================================================
+   NOTEBOOK PAGE
+===================================================== */
+
+.notebook-page {
+  position: relative;
+
+  width: 100%;
+
+  min-height: 100vh;
+
+  padding: 34px 50px;
+
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+
+  background:
+    linear-gradient(
+      rgba(255, 255, 255, 0.15),
+      rgba(255, 255, 255, 0)
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0px,
+      transparent 27px,
+      rgba(70, 65, 55, 0.035) 28px
+    ),
+    var(--paper);
+
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.35),
+    inset 0 0 50px rgba(87, 69, 43, 0.08);
+
+  border-left: 1px solid rgba(255, 255, 255, 0.5);
+  border-right: 1px solid rgba(0, 0, 0, 0.08);
+
+  overflow: hidden;
+}
+
+
+
+
+/* =====================================================
+   PAGE INNER
+===================================================== */
+
+.page-inner {
+  width: 100%;
+
+  max-width: 1040px;
+
+  min-height: calc(100vh - 68px);
+
+  margin: auto;
+
+  position: relative;
+
+  z-index: 5;
+
+  display: flex;
+
+  flex-direction: column;
+}
+
+/* =====================================================
+   PAGE HEADER
+===================================================== */
+
+.page-header {
+  height: 50px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 18px;
+
+  color: #5d574e;
+
+  font-family: "DM Mono", monospace;
+
+  font-size: 9px;
+
+  letter-spacing: 2px;
+
+  text-transform: uppercase;
+}
+
+.page-header div {
+  height: 1px;
+
+  flex: 1;
+
+  background: var(--line);
+}
+
+/* =====================================================
+   LEFT NAVIGATION
+===================================================== */
+
+.page-tabs {
+  position: fixed;
+
+  z-index: 50;
+
+  left: 0;
+
+  right: auto;
+
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  width: 120px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 5px;
+}
+
+.page-tab {
+  width: 112px;
+
+  height: 66px;
+
+  margin: 0;
+
+  padding: 0;
+
+  border: none;
+
+  border-radius: 0 7px 7px 0;
+
+  background: #d8cfbd;
+
+  color: #6f685e;
+
+  cursor: pointer;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  align-items: center;
+
+  gap: 5px;
+
+  box-shadow:
+    3px 3px 8px rgba(0, 0, 0, 0.2);
+
+  transition:
+    width 0.25s ease,
+    background 0.25s ease,
+    color 0.25s ease;
+}
+
+.page-tab span {
+  font-family: "DM Mono", monospace;
+
+  font-size: 10px;
+
+  line-height: 1;
+
+  letter-spacing: 1px;
+}
+
+.page-tab small {
+  font-family: "Inter", sans-serif;
+
+  font-size: 9px;
+
+  line-height: 1;
+
+  letter-spacing: 1.5px;
+
+  font-weight: 500;
+}
+
+.page-tab.active {
+  width: 129px;
+
+  background: #a87318;
+
+  color: white;
+
+  box-shadow:
+    4px 4px 12px rgba(0, 0, 0, 0.28);
+}
+
+.page-tab:hover {
+  width: 129px;
+
+  background: #a87318;
+
+  color: white;
+}
+
+/* =====================================================
+   HOME PAGE
+===================================================== */
+
+.home-content {
+  flex: 1;
+
+  display: grid;
+
+  grid-template-columns: 0.9fr 1.1fr;
+
+  align-items: center;
+
+  gap: 55px;
+}
+
+.photo-area {
+  position: relative;
+
+  display: flex;
+
+  justify-content: center;
+}
+
+.photo-frame {
+  width: 315px;
+
+  height: 410px;
+
+  padding: 14px;
+
+  padding-bottom: 42px;
+
+  background: #f8f2e7;
+
+  transform: rotate(-2deg);
+
+  box-shadow:
+    0 13px 25px rgba(0, 0, 0, 0.18);
+
+  position: relative;
+}
+
+.photo-frame::before {
+  content: "";
+
+  position: absolute;
+
+  width: 65px;
+
+  height: 22px;
+
+  top: -9px;
+
+  left: 105px;
+
+  background: rgba(206, 184, 141, 0.65);
+
+  transform: rotate(-3deg);
+}
+
+.profile-image {
+  width: 100%;
+
+  height: 100%;
+
+  object-fit: cover;
+
+  filter: saturate(0.85);
+}
+
+.signature {
+  position: absolute;
+
+  bottom: 7px;
+
+  right: 25px;
+
+  font-family: "Caveat", cursive;
+
+  font-size: 22px;
+
+  color: #28251f;
+
+  transform: rotate(-4deg);
+}
+
+.side-note {
+  position: absolute;
+
+  left: -55px;
+
+  bottom: 10px;
+
+  font-family: "Caveat", cursive;
+
+  font-size: 18px;
+
+  line-height: 1.05;
+
+  transform: rotate(-9deg);
+
+  color: #5c5140;
+}
+
+.home-info {
+  padding-top: 25px;
+}
+
+.eyebrow {
+  font-family: "DM Mono", monospace;
+
+  letter-spacing: 4px;
+
+  font-size: 10px;
+
+  color: #5f584e;
+}
+
+.home-info h1 {
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: clamp(60px, 7vw, 92px);
+
+  line-height: 0.9;
+
+  margin: 17px 0 15px;
+
+  font-weight: 600;
+}
+
+.home-info h1 span,
+.section-title span,
+.projects-heading span,
+.contact-content h2 span {
+  color: var(--gold);
+}
+
+.gold-line {
+  width: 40px;
+
+  height: 2px;
+
+  background: var(--gold);
+
+  margin-bottom: 22px;
+}
+
+.intro {
+  max-width: 480px;
+
+  font-size: 14px;
+
+  line-height: 1.8;
+
+  color: #625d54;
+}
+
+.mini-skills {
+  display: flex;
+
+  gap: 10px;
+
+  margin: 25px 0;
+}
+
+.mini-skill {
+  width: 62px;
+
+  height: 67px;
+
+  border: 1px solid rgba(71, 65, 56, 0.14);
+
+  background: rgba(255, 255, 255, 0.32);
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  align-items: center;
+
+  gap: 7px;
+
+  border-radius: 7px;
+}
+
+.mini-skill strong {
+  font-size: 19px;
+}
+
+.mini-skill span {
+  font-size: 8px;
+
+  color: #696257;
+}
+
+.journey-button,
+.email-button {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 18px;
+
+  padding: 11px 12px 11px 20px;
+
+  border-radius: 30px;
+
+  background: #27231d;
+
+  color: white;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 5px 0 rgba(156, 107, 32, 0.7),
+    0 12px 20px rgba(0, 0, 0, 0.15);
+
+  transition: transform 0.25s ease;
+}
+
+.journey-button:hover,
+.email-button:hover {
+  transform: translateY(-3px);
+}
+
+.journey-button b,
+.email-button b {
+  width: 32px;
+
+  height: 32px;
+
+  border-radius: 50%;
+
+  background: var(--gold);
+
+  display: grid;
+
+  place-items: center;
+}
+
+.scroll-hint {
+  position: absolute;
+
+  bottom: 20px;
+
+  right: 50px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  font-family: "DM Mono", monospace;
+
+  font-size: 8px;
+
+  letter-spacing: 1px;
+
+  color: #6a6359;
+}
+
+.scroll-hint b {
+  font-size: 15px;
+}
+
+/* =====================================================
+   SECTION TITLES
+===================================================== */
+
+.section-title {
+  margin: 45px 0 30px;
+}
+
+.section-title h2,
+.projects-heading h2,
+.skills-heading h2 {
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: clamp(45px, 5vw, 68px);
+
+  font-weight: 600;
+}
+
+/* =====================================================
+   ABOUT
+===================================================== */
+
+.about-layout {
+  flex: 1;
+
+  display: grid;
+
+  grid-template-columns: 0.8fr 1.2fr;
+
+  gap: 60px;
+
+  align-items: center;
+}
+
+.visual-note {
+  position: relative;
+
+  height: 440px;
+}
+
+.mountain-card {
+  width: 280px;
+
+  height: 350px;
+
+  background:
+    linear-gradient(
+      rgba(26, 34, 42, 0.35),
+      rgba(26, 34, 42, 0.75)
+    ),
+    #37414a;
+
+  transform: rotate(-3deg);
+
+  box-shadow:
+    0 15px 25px rgba(0, 0, 0, 0.2);
+
+  padding: 25px;
+
+  color: #eae1cd;
+
+  position: absolute;
+
+  left: 30px;
+
+  top: 25px;
+}
+
+.stars {
+  font-size: 13px;
+
+  opacity: 0.8;
+}
+
+.mountain-art {
+  text-align: center;
+
+  margin-top: 75px;
+
+  font-size: 32px;
+
+  line-height: 0.75;
+
+  color: #d5c3a0;
+}
+
+.mountain-card p {
+  position: absolute;
+
+  bottom: 35px;
+
+  left: 35px;
+
+  font-family: "Caveat", cursive;
+
+  font-size: 28px;
+
+  line-height: 0.9;
+}
+
+.paper-note {
+  position: absolute;
+
+  bottom: 5px;
+
+  right: 10px;
+
+  background: #e9ddc4;
+
+  padding: 18px 20px;
+
+  font-family: "Caveat", cursive;
+
+  font-size: 22px;
+
+  line-height: 1;
+
+  transform: rotate(6deg);
+
+  box-shadow:
+    0 8px 18px rgba(0, 0, 0, 0.18);
+}
+
+.about-content h2 {
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: 62px;
+
+  margin-bottom: 18px;
+}
+
+.about-content > p {
+  color: #615b51;
+
+  line-height: 1.75;
+
+  font-size: 13px;
+
+  max-width: 600px;
+
+  margin-bottom: 9px;
+}
+
+.about-points {
+  margin-top: 25px;
+
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 17px;
+}
+
+.about-point {
+  display: flex;
+
+  gap: 12px;
+}
+
+.about-icon {
+  flex: 0 0 35px;
+
+  height: 35px;
+
+  border-radius: 7px;
+
+  background: #29251f;
+
+  color: white;
+
+  display: grid;
+
+  place-items: center;
+
+  font-size: 14px;
+}
+
+.about-point h3 {
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: 17px;
+}
+
+.about-point p {
+  margin-top: 3px;
+
+  color: #746d62;
+
+  font-size: 10px;
+
+  line-height: 1.5;
+}
+
+/* =====================================================
+   EDUCATION PAGE - FULL COLLEGE IMAGE
+===================================================== */
+
+.education-page {
+  position: relative;
+
+  overflow: hidden;
+}
+
+
+/* FULL SCREEN COLLEGE IMAGE */
+
+.education-bg {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+
+  height: 100%;
+
+  object-fit: cover;
+
+  object-position: center;
+
+  z-index: 0;
+
+  /*
+    Increase/decrease this value
+    0.50 = faded
+    0.70 = visible
+    0.82 = strong
+    1.00 = original
+  */
+
+  opacity: 0.82;
+
+  /*
+    Keep original college colors
+  */
+
+  filter: none;
+
+  transform: scale(1.02);
+}
+
+
+/* LIGHT PAPER OVERLAY */
+
+.education-overlay {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 1;
+
+  /*
+    Only a small amount of cream tint.
+    This keeps the notebook feeling
+    without destroying the college colors.
+  */
+
+  background: rgba(238, 232, 218, 0.18);
+
+  pointer-events: none;
+}
+
+
+/* EDUCATION CONTENT ABOVE IMAGE */
+
+.education-content-layer {
+  position: relative;
+
+  z-index: 5;
+}
+
+
+/* EDUCATION TITLE */
+
+.education-page .section-title {
+  margin-top: 45px;
+}
+
+.education-page .section-title h2 {
+  color: #211f1b;
+
+  text-shadow:
+    0 2px 6px rgba(255, 255, 255, 0.7);
+}
+
+
+/* EDUCATION CONTENT */
+
+.education-page .education-content {
+  flex: 1;
+
+  display: flex;
+
+  align-items: center;
+}
+
+
+/* EDUCATION TIMELINE */
+
+.education-page .timeline {
+  width: 72%;
+
+  max-width: 720px;
+
+  margin-left: 20px;
+
+  padding: 12px 22px;
+
+  border-left: 1px solid rgba(80, 67, 48, 0.6);
+
+  /*
+    Slight transparent paper background
+    so text remains readable over photo
+  */
+
+  background: rgba(247, 241, 228, 0.42);
+
+  backdrop-filter: blur(2px);
+
+  border-radius: 4px;
+}
+
+
+/* EDUCATION ITEM */
+
+.education-item {
+  position: relative;
+
+  display: grid;
+
+  grid-template-columns: 55px 1fr;
+
+  padding: 18px 0 18px 20px;
+}
+
+.timeline-dot {
+  position: absolute;
+
+  left: -6px;
+
+  top: 28px;
+
+  width: 11px;
+
+  height: 11px;
+
+  border-radius: 50%;
+
+  border: 2px solid #92703a;
+
+  background: var(--paper);
+}
+
+.education-icon {
+  width: 39px;
+
+  height: 39px;
+
+  border-radius: 7px;
+
+  border: 1px solid rgba(50, 45, 39, 0.15);
+
+  display: grid;
+
+  place-items: center;
+
+  background: rgba(255, 255, 255, 0.65);
+}
+
+.education-text h3 {
+  font-size: 14px;
+
+  margin-bottom: 4px;
+}
+
+.education-text p {
+  font-size: 11px;
+
+  color: #4f4a42;
+}
+
+.education-text small {
+  display: block;
+
+  margin-top: 6px;
+
+  font-size: 9px;
+
+  color: #5f584e;
+}
+
+
+/* =====================================================
+   EXPERIENCE
+===================================================== */
+
+.experience-layout {
+  flex: 1;
+
+  display: grid;
+
+  grid-template-columns: 1fr 0.3fr;
+
+  gap: 50px;
+}
+
+.experience-timeline {
+  border-left: 1px solid #a89b86;
+
+  padding-left: 35px;
+}
+
+.experience-item {
+  position: relative;
+
+  padding-bottom: 35px;
+}
+
+.experience-dot {
+  position: absolute;
+
+  width: 11px;
+
+  height: 11px;
+
+  border: 2px solid #8e6a31;
+
+  background: var(--paper);
+
+  border-radius: 50%;
+
+  left: -41px;
+
+  top: 6px;
+}
+
+.experience-date {
+  float: right;
+
+  font-size: 9px;
+
+  color: #6e675d;
+
+  font-family: "DM Mono", monospace;
+}
+
+.experience-item h3 {
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: 22px;
+}
+
+.experience-item h4 {
+  font-size: 12px;
+
+  margin-top: 3px;
+}
+
+.experience-item p {
+  color: #686156;
+
+  font-size: 11px;
+
+  line-height: 1.65;
+
+  max-width: 580px;
+
+  margin-top: 8px;
+}
+
+.experience-points {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 7px;
+
+  margin-top: 10px;
+}
+
+.experience-points span {
+  font-size: 8px;
+
+  padding: 5px 9px;
+
+  background: rgba(255, 255, 255, 0.35);
+
+  border: 1px solid rgba(70, 63, 53, 0.12);
+
+  border-radius: 20px;
+}
+
+.experience-note {
+  align-self: end;
+
+  text-align: center;
+
+  font-family: "Caveat", cursive;
+
+  font-size: 24px;
+
+  transform: rotate(-7deg);
+}
+
+.coffee-icon {
+  font-size: 45px;
+}
+
+/* =====================================================
+   SKILLS
+===================================================== */
+
+.skills-heading {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: start;
+
+  margin: 20px 0 25px;
+}
+
+.hand-note,
+.project-note {
+  font-family: "Caveat", cursive;
+
+  font-size: 19px;
+
+  line-height: 0.9;
+
+  transform: rotate(5deg);
+
+  color: #746856;
+}
+
+.skills-grid {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 18px 45px;
+}
+
+.skill-group h3 {
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: 17px;
+
+  margin-bottom: 8px;
+
+  position: relative;
+
+  padding-left: 14px;
+}
+
+.skill-group h3::before {
+  content: "•";
+
+  position: absolute;
+
+  left: 0;
+
+  color: #26221d;
+}
+
+.skill-items {
+  display: grid;
+
+  grid-template-columns: repeat(5, 1fr);
+
+  gap: 9px;
+}
+
+.skill-card {
+  min-height: 77px;
+
+  border: 1px solid rgba(63, 56, 46, 0.12);
+
+  background: rgba(255, 255, 255, 0.28);
+
+  border-radius: 8px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  align-items: center;
+
+  gap: 6px;
+}
+
+.skill-icon {
+  width: 35px;
+
+  height: 35px;
+
+  border-radius: 8px;
+
+  background: rgba(255, 255, 255, 0.55);
+
+  display: grid;
+
+  place-items: center;
+
+  font-weight: 700;
+
+  font-size: 12px;
+}
+
+.skill-card span {
+  font-size: 8px;
+
+  color: #6d665b;
+}
+
+/* =====================================================
+   PROJECTS
+===================================================== */
+
+.projects-heading {
+  display: flex;
+
+  justify-content: space-between;
+
+  margin: 35px 0 25px;
+}
+
+.projects-list {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 13px;
+}
+
+.project-card {
+  min-height: 125px;
+
+  border: 1px solid rgba(70, 62, 50, 0.14);
+
+  background: rgba(255, 255, 255, 0.28);
+
+  border-radius: 9px;
+
+  padding: 20px;
+
+  display: grid;
+
+  grid-template-columns: 50px 1fr 40px;
+
+  align-items: center;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.project-card:hover {
+  transform: translateX(6px);
+
+  box-shadow:
+    0 10px 20px rgba(0, 0, 0, 0.08);
+}
+
+.project-number {
+  font-family: "DM Mono", monospace;
+
+  font-size: 10px;
+
+  color: #8e6a31;
+}
+
+.project-info h3 {
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: 21px;
+}
+
+.project-info p {
+  max-width: 670px;
+
+  margin: 5px 0 9px;
+
+  font-size: 10px;
+
+  line-height: 1.5;
+
+  color: #686156;
+}
+
+.project-tech {
+  display: flex;
+
+  gap: 6px;
+
+  flex-wrap: wrap;
+}
+
+.project-tech span {
+  font-size: 7px;
+
+  border: 1px solid rgba(70, 63, 53, 0.12);
+
+  padding: 4px 8px;
+
+  border-radius: 15px;
+}
+
+.project-arrow {
+  font-size: 22px;
+
+  color: #756b5d;
+}
+
+/* =====================================================
+   ACHIEVEMENTS
+===================================================== */
+
+.achievement-grid {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 18px;
+}
+
+.achievement-card {
+  min-height: 190px;
+
+  border: 1px solid rgba(63, 55, 44, 0.14);
+
+  background: rgba(255, 255, 255, 0.28);
+
+  padding: 22px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: space-between;
+}
+
+.achievement-card > span {
+  font-family: "DM Mono", monospace;
+
+  color: var(--gold);
+
+  font-size: 11px;
+}
+
+.achievement-card h3 {
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: 22px;
+}
+
+.achievement-card p {
+  margin-top: 7px;
+
+  color: #696157;
+
+  font-size: 10px;
+
+  line-height: 1.6;
+}
+
+.achievement-sketch {
+  margin-top: 40px;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  gap: 15px;
+
+  font-family: "Caveat", cursive;
+
+  font-size: 25px;
+
+  transform: rotate(-3deg);
+}
+
+.achievement-sketch span {
+  font-size: 45px;
+
+  color: var(--gold);
+}
+
+/* =====================================================
+   CONTACT
+===================================================== */
+
+.contact-content {
+  flex: 1;
+
+  display: grid;
+
+  grid-template-columns: 1.1fr 0.9fr;
+
+  gap: 80px;
+
+  align-items: center;
+}
+
+.contact-content h2 {
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: clamp(50px, 6vw, 76px);
+
+  line-height: 0.95;
+
+  margin: 18px 0;
+}
+
+.contact-description {
+  max-width: 480px;
+
+  color: #686156;
+
+  font-size: 12px;
+
+  line-height: 1.7;
+
+  margin-bottom: 25px;
+}
+
+.email-button {
+  text-decoration: none;
+}
+
+.contact-card {
+  border-top: 1px solid var(--line);
+}
+
+.contact-item {
+  display: block;
+
+  text-decoration: none;
+
+  color: inherit;
+
+  padding: 18px 0;
+
+  border-bottom: 1px solid var(--line);
+}
+
+.contact-item span {
+  display: block;
+
+  font-family: "DM Mono", monospace;
+
+  font-size: 8px;
+
+  letter-spacing: 2px;
+
+  color: #83796b;
+
+  margin-bottom: 5px;
+}
+
+.contact-item strong {
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: 19px;
+
+  font-weight: 600;
+}
+
+.contact-item:hover strong {
+  color: var(--gold);
+}
+
+.footer-note {
+  padding-top: 10px;
+
+  text-align: center;
+
+  font-family: "DM Mono", monospace;
+
+  font-size: 8px;
+
+  letter-spacing: 1px;
+
+  color: #82786a;
+}
+
+/* =====================================================
+   SCROLL CONTROLS
+===================================================== */
+
+.scroll-controls {
+  position: fixed;
+
+  z-index: 30;
+
+  left: 50%;
+
+  bottom: 16px;
+
+  transform: translateX(-50%);
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 15px;
+
+  padding: 7px 12px;
+
+  background: rgba(39, 35, 30, 0.85);
+
+  color: #ddd3c0;
+
+  border-radius: 30px;
+
+  backdrop-filter: blur(8px);
+
+  font-family: "DM Mono", monospace;
+
+  font-size: 8px;
+}
+
+.scroll-controls button {
+  width: 25px;
+
+  height: 25px;
+
+  border-radius: 50%;
+
+  background: transparent;
+
+  color: #ddd3c0;
+
+  cursor: pointer;
+
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.scroll-controls button:hover:not(:disabled) {
+  background: var(--gold);
+}
+
+.scroll-controls button:disabled {
+  opacity: 0.3;
+
+  cursor: not-allowed;
+}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 1100px) {
+  .notebook-scroll {
+    margin-left: 135px;
+
+    width: calc(100vw - 155px);
+  }
+
+  .page-tab {
+    width: 100px;
+  }
+
+  .page-tab.active,
+  .page-tab:hover {
+    width: 115px;
+  }
+}
+
+@media (max-width: 900px) {
+  .notebook-scroll {
+    width: 100%;
+
+    margin-left: 0;
+  }
+
+  .page-tabs {
+    display: none;
+  }
+
+  .notebook-page {
+    padding: 25px 30px;
+  }
+
+  .home-content,
+  .about-layout,
+  .education-content,
+  .experience-layout,
+  .contact-content {
+    grid-template-columns: 1fr;
+  }
+
+  .home-content {
+    gap: 20px;
+  }
+
+  .photo-frame {
+    width: 210px;
+
+    height: 260px;
+  }
+
+  .side-note {
+    display: none;
+  }
+
+  .home-info h1 {
+    font-size: 55px;
+  }
+
+  .visual-note {
+    display: none;
+  }
+
+  .about-content h2 {
+    font-size: 50px;
+  }
+
+  .about-points {
+    grid-template-columns: 1fr;
+  }
+
+  .education-sketch,
+  .experience-note {
+    display: none;
+  }
+
+  .education-page .timeline {
+    width: 100%;
+  }
+
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .achievement-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .achievement-card {
+    min-height: 140px;
+  }
+
+  .contact-content {
+    gap: 30px;
+  }
+}
+
+@media (max-width: 600px) {
+  .notebook-page {
+    padding: 20px;
+  }
+
+  .notebook-page::before {
+    inset: 8px;
+  }
+
+  .page-inner {
+    min-height: calc(100vh - 40px);
+  }
+
+  .home-content {
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+  }
+
+  .photo-frame {
+    width: 175px;
+
+    height: 220px;
+  }
+
+  .home-info {
+    text-align: center;
+  }
+
+  .home-info h1 {
+    font-size: 47px;
+  }
+
+  .gold-line {
+    margin-left: auto;
+
+    margin-right: auto;
+  }
+
+  .intro {
+    font-size: 11px;
+  }
+
+  .mini-skills {
+    justify-content: center;
+  }
+
+  .mini-skill:nth-child(n + 4) {
+    display: none;
+  }
+
+  .journey-button {
+    margin: auto;
+  }
+
+  .scroll-hint {
+    display: none;
+  }
+
+  .skills-grid {
+    gap: 15px;
+  }
+
+  .skill-items {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .project-card {
+    grid-template-columns: 35px 1fr;
+  }
+
+  .project-arrow {
+    display: none;
+  }
+
+  .project-info p {
+    font-size: 9px;
+  }
+
+  .contact-content h2 {
+    font-size: 48px;
+  }
+
+  /* Stronger mobile college image */
+  .education-bg {
+    opacity: 0.75;
+  }
+
+  .education-overlay {
+    background: rgba(238, 232, 218, 0.22);
+  }
+}
+/* =====================================================
+   EDUCATION PAGE
+===================================================== */
+
+.education-page {
+  position: relative;
+  overflow: hidden;
+}
+
+
+/* =====================================================
+   FULL PAGE COLLEGE IMAGE
+===================================================== */
+
+.education-bg {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center;
+
+  z-index: 0;
+
+  /* Keep college colors clearly visible */
+  opacity: 0.90;
+
+  filter: none;
+
+  transform: scale(1.02);
+}
+
+
+/* =====================================================
+   VERY LIGHT IMAGE TINT
+===================================================== */
+
+.education-overlay {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 1;
+
+  /*
+     Very light cream tint.
+     Do NOT make this too opaque.
+  */
+
+  background: rgba(238, 232, 218, 0.08);
+
+  pointer-events: none;
+}
+
+
+/* =====================================================
+   CONTENT ABOVE IMAGE
+===================================================== */
+
+.education-content-layer {
+  position: relative;
+
+  z-index: 5;
+}
+
+
+/* =====================================================
+   EDUCATION TITLE
+===================================================== */
+
+.education-page .section-title {
+  margin-top: 45px;
+
+  margin-bottom: 35px;
+}
+
+.education-page .section-title h2 {
+  color: #171512;
+
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: clamp(50px, 5vw, 70px);
+
+  font-weight: 700;
+
+  /*
+     White shadow makes the title readable
+     against the photograph.
+  */
+
+  text-shadow:
+    0 2px 0 rgba(255, 255, 255, 0.75),
+    0 4px 10px rgba(0, 0, 0, 0.20);
+}
+
+
+/* =====================================================
+   EDUCATION CONTENT
+===================================================== */
+
+.education-page .education-content {
+  flex: 1;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+}
+
+
+/* =====================================================
+   EDUCATION INFORMATION PANEL
+===================================================== */
+
+.education-page .timeline {
+  width: 78%;
+
+  max-width: 780px;
+
+  margin: 0 auto;
+
+  padding: 22px 30px;
+
+  /*
+     IMPORTANT:
+     Strong cream panel makes text readable.
+  */
+
+  background: rgba(247, 241, 228, 0.91);
+
+  /*
+     Slight transparency lets a little
+     of the college image remain visible.
+  */
+
+  backdrop-filter: blur(5px);
+
+  -webkit-backdrop-filter: blur(5px);
+
+  border:
+
+    1px solid rgba(255, 255, 255, 0.75);
+
+  border-radius: 8px;
+
+  box-shadow:
+
+    0 15px 35px rgba(0, 0, 0, 0.18),
+
+    inset 0 0 25px rgba(100, 80, 50, 0.06);
+}
+
+
+/* =====================================================
+   TIMELINE
+===================================================== */
+
+.education-page .education-item {
+  position: relative;
+
+  display: grid;
+
+  grid-template-columns: 58px 1fr;
+
+  padding: 20px 5px 20px 20px;
+}
+
+
+/* Vertical separator */
+
+.education-page .education-item:not(:last-child)::after {
+  content: "";
+
+  position: absolute;
+
+  left: 5px;
+
+  top: 63px;
+
+  bottom: -5px;
+
+  width: 1px;
+
+  background: rgba(90, 72, 45, 0.35);
+}
+
+
+/* =====================================================
+   TIMELINE DOT
+===================================================== */
+
+.education-page .timeline-dot {
+  position: absolute;
+
+  left: -1px;
+
+  top: 31px;
+
+  width: 13px;
+
+  height: 13px;
+
+  border-radius: 50%;
+
+  background: #f7f1e4;
+
+  border: 2px solid #a87318;
+
+  z-index: 3;
+}
+
+
+/* =====================================================
+   EDUCATION ICON
+===================================================== */
+
+.education-page .education-icon {
+  width: 42px;
+
+  height: 42px;
+
+  border-radius: 8px;
+
+  background: #f9f4e9;
+
+  border: 1px solid rgba(60, 50, 35, 0.16);
+
+  display: grid;
+
+  place-items: center;
+
+  color: #27231e;
+
+  font-size: 15px;
+
+  box-shadow:
+    0 3px 8px rgba(0, 0, 0, 0.08);
+}
+
+
+/* =====================================================
+   EDUCATION TEXT
+===================================================== */
+
+.education-page .education-text {
+  padding-left: 5px;
+}
+
+
+.education-page .education-text h3 {
+  font-family: "Inter", sans-serif;
+
+  font-size: 15px;
+
+  font-weight: 700;
+
+  color: #171512;
+
+  margin-bottom: 6px;
+}
+
+
+.education-page .education-text p {
+  font-family: "Inter", sans-serif;
+
+  font-size: 11px;
+
+  font-weight: 500;
+
+  color: #4c473f;
+
+  margin-bottom: 6px;
+}
+
+
+.education-page .education-text small {
+  display: block;
+
+  font-family: "DM Mono", monospace;
+
+  font-size: 8px;
+
+  letter-spacing: 0.3px;
+
+  color: #6b6255;
+}
+
+
+/* =====================================================
+   EXTRA TEXT CONTRAST
+===================================================== */
+
+.education-page .education-text h3,
+.education-page .education-text p,
+.education-page .education-text small {
+  text-shadow:
+    0 1px 1px rgba(255, 255, 255, 0.8);
+}
+/* =====================================================
+   EDUCATION TEXT - LARGER & CLEARER
+===================================================== */
+
+.education-page .education-text {
+  padding-left: 8px;
+}
+
+
+/* Degree */
+
+.education-page .education-text h3 {
+  font-family: "Inter", sans-serif;
+
+  font-size: 17px;
+
+  font-weight: 700;
+
+  line-height: 1.35;
+
+  color: #171512;
+
+  margin-bottom: 6px;
+
+  letter-spacing: 0.1px;
+
+  text-shadow:
+    0 1px 1px rgba(255, 255, 255, 0.8);
+}
+
+
+/* College / School */
+
+.education-page .education-text p {
+  font-family: "Inter", sans-serif;
+
+  font-size: 13px;
+
+  font-weight: 500;
+
+  line-height: 1.5;
+
+  color: #403b34;
+
+  margin-bottom: 6px;
+
+  text-shadow:
+    0 1px 1px rgba(255, 255, 255, 0.7);
+}
+
+
+/* Date + CGPA */
+
+.education-page .education-text small {
+  display: block;
+
+  font-family: "DM Mono", monospace;
+
+  font-size: 11px;
+
+  font-weight: 500;
+
+  line-height: 1.6;
+
+  letter-spacing: 0.2px;
+
+  color: #514a40;
+
+  text-shadow:
+    0 1px 1px rgba(255, 255, 255, 0.8);
+}
+/* =====================================================
+   EXPERIENCE PAGE
+===================================================== */
+
+.experience-page {
+  position: relative;
+}
+
+
+/* =====================================================
+   HEADING
+===================================================== */
+
+.experience-heading {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: flex-start;
+
+  margin-top: 45px;
+
+  margin-bottom: 35px;
+}
+
+.experience-eyebrow {
+  font-family: "DM Mono", monospace;
+
+  font-size: 9px;
+
+  letter-spacing: 3px;
+
+  color: #71695d;
+
+  margin-bottom: 8px;
+}
+
+.experience-heading h2 {
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: clamp(48px, 5vw, 68px);
+
+  line-height: 0.95;
+
+  font-weight: 600;
+}
+
+.experience-heading h2 span {
+  color: var(--gold);
+}
+
+
+/* =====================================================
+   HANDWRITTEN NOTE
+===================================================== */
+
+.experience-note {
+  font-family: "Caveat", cursive;
+
+  font-size: 23px;
+
+  line-height: 0.9;
+
+  color: #756a59;
+
+  transform: rotate(-7deg);
+
+  margin-right: 45px;
+
+  margin-top: 10px;
+}
+
+
+/* =====================================================
+   EXPERIENCE CARDS
+===================================================== */
+
+.experience-cards {
+  flex: 1;
+
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 25px;
+
+  align-items: center;
+
+  max-width: 950px;
+
+  margin: 0 auto;
+}
+
+
+/* =====================================================
+   CARD
+===================================================== */
+
+.experience-card {
+  position: relative;
+
+  min-height: 375px;
+
+  padding: 27px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,0.55),
+      rgba(255,255,255,0.18)
+    );
+
+  border: 1px solid rgba(63,55,44,0.15);
+
+  border-radius: 5px;
+
+  box-shadow:
+    0 12px 25px rgba(0,0,0,0.08);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.experience-card:hover {
+  transform: translateY(-7px) rotate(-0.5deg);
+
+  box-shadow:
+    0 20px 35px rgba(0,0,0,0.14);
+}
+
+
+/* =====================================================
+   FEATURED CARD
+===================================================== */
+
+.experience-card.featured {
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,0.70),
+      rgba(245,237,219,0.55)
+    );
+
+  border-color: rgba(168,115,24,0.3);
+}
+
+
+/* =====================================================
+   TOP ROW
+===================================================== */
+
+.experience-card-top {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  margin-bottom: 20px;
+}
+
+.experience-number {
+  font-family: "DM Mono", monospace;
+
+  font-size: 10px;
+
+  color: var(--gold);
+
+  letter-spacing: 1px;
+}
+
+.experience-date {
+  font-family: "DM Mono", monospace;
+
+  font-size: 8px;
+
+  letter-spacing: 1px;
+
+  color: #71695e;
+}
+
+
+/* =====================================================
+   ICON
+===================================================== */
+
+.experience-icon {
+  width: 48px;
+
+  height: 48px;
+
+  display: grid;
+
+  place-items: center;
+
+  background: #29251f;
+
+  color: #f4ead7;
+
+  border-radius: 8px;
+
+  font-family: "DM Mono", monospace;
+
+  font-size: 11px;
+
+  letter-spacing: 1px;
+
+  margin-bottom: 18px;
+
+  box-shadow:
+    0 5px 10px rgba(0,0,0,0.12);
+}
+
+
+/* =====================================================
+   ROLE
+===================================================== */
+
+.experience-role {
+  font-family: "DM Mono", monospace;
+
+  font-size: 8px;
+
+  letter-spacing: 2px;
+
+  color: var(--gold);
+
+  margin-bottom: 5px;
+}
+
+
+/* =====================================================
+   COMPANY
+===================================================== */
+
+.experience-card h3 {
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: 29px;
+
+  font-weight: 600;
+
+  line-height: 1;
+}
+
+.experience-location {
+  font-size: 10px;
+
+  color: #746d63;
+
+  margin-top: 6px;
+}
+
+
+/* =====================================================
+   DIVIDER
+===================================================== */
+
+.experience-divider {
+  width: 100%;
+
+  height: 1px;
+
+  background: rgba(70,60,45,0.14);
+
+  margin: 20px 0;
+}
+
+
+/* =====================================================
+   DESCRIPTION
+===================================================== */
+
+.experience-description {
+  font-size: 11px;
+
+  line-height: 1.65;
+
+  color: #575149;
+
+  max-width: 390px;
+}
+
+
+/* =====================================================
+   TECHNOLOGY TAGS
+===================================================== */
+
+.experience-tags {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 7px;
+
+  margin-top: 18px;
+}
+
+.experience-tags span {
+  padding: 5px 9px;
+
+  border-radius: 20px;
+
+  border: 1px solid rgba(70,60,45,0.15);
+
+  background: rgba(255,255,255,0.38);
+
+  font-size: 8px;
+
+  color: #5e574e;
+}
+
+
+/* =====================================================
+   BOTTOM
+===================================================== */
+
+.experience-bottom {
+  display: flex;
+
+  align-items: center;
+
+  gap: 15px;
+
+  margin-top: 20px;
+
+  margin-bottom: 10px;
+
+  color: #84796a;
+}
+
+.experience-bottom span {
+  font-family: "DM Mono", monospace;
+
+  font-size: 8px;
+}
+
+.experience-bottom div {
+  height: 1px;
+
+  flex: 1;
+
+  background: rgba(80,70,55,0.18);
+}
+
+.experience-bottom p {
+  font-family: "DM Mono", monospace;
+
+  font-size: 7px;
+
+  letter-spacing: 2px;
+
+  white-space: nowrap;
+}
+/* =====================================================
+   EXPERIENCE PAGE
+===================================================== */
+
+.experience-page {
+  position: relative;
+}
+
+
+/* =====================================================
+   HEADING
+===================================================== */
+
+.experience-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  margin-top: 42px;
+  margin-bottom: 32px;
+}
+
+.experience-eyebrow {
+  font-family: "DM Mono", monospace;
+
+  font-size: 11px;
+  letter-spacing: 3px;
+
+  color: #625b50;
+
+  margin-bottom: 10px;
+}
+
+.experience-heading h2 {
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: clamp(55px, 5vw, 72px);
+
+  line-height: 0.95;
+
+  font-weight: 600;
+}
+
+.experience-heading h2 span {
+  color: var(--gold);
+}
+
+
+/* =====================================================
+   HANDWRITTEN NOTE
+===================================================== */
+
+.experience-note {
+  font-family: "Caveat", cursive;
+
+  font-size: 27px;
+
+  line-height: 0.9;
+
+  color: #756a59;
+
+  transform: rotate(-7deg);
+
+  margin-right: 45px;
+
+  margin-top: 10px;
+}
+
+
+/* =====================================================
+   EXPERIENCE CARDS
+===================================================== */
+
+.experience-cards {
+  flex: 1;
+
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 28px;
+
+  align-items: center;
+
+  max-width: 950px;
+
+  margin: 0 auto;
+}
+
+
+/* =====================================================
+   CARD
+===================================================== */
+
+.experience-card {
+  position: relative;
+
+  min-height: 390px;
+
+  padding: 30px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,0.60),
+      rgba(255,255,255,0.22)
+    );
+
+  border: 1px solid rgba(63,55,44,0.15);
+
+  border-radius: 6px;
+
+  box-shadow:
+    0 12px 25px rgba(0,0,0,0.08);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.experience-card:hover {
+  transform: translateY(-7px);
+
+  box-shadow:
+    0 20px 35px rgba(0,0,0,0.14);
+}
+
+
+/* =====================================================
+   FEATURED CARD
+===================================================== */
+
+.experience-card.featured {
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,0.72),
+      rgba(245,237,219,0.58)
+    );
+
+  border-color: rgba(168,115,24,0.3);
+}
+
+
+/* =====================================================
+   TOP ROW
+===================================================== */
+
+.experience-card-top {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  margin-bottom: 22px;
+}
+
+.experience-number {
+  font-family: "DM Mono", monospace;
+
+  font-size: 12px;
+
+  color: var(--gold);
+
+  letter-spacing: 1px;
+}
+
+.experience-date {
+  font-family: "DM Mono", monospace;
+
+  font-size: 10px;
+
+  letter-spacing: 1px;
+
+  color: #625b51;
+}
+
+
+/* =====================================================
+   ICON
+===================================================== */
+
+.experience-icon {
+  width: 54px;
+
+  height: 54px;
+
+  display: grid;
+
+  place-items: center;
+
+  background: #29251f;
+
+  color: #f4ead7;
+
+  border-radius: 9px;
+
+  font-family: "DM Mono", monospace;
+
+  font-size: 13px;
+
+  letter-spacing: 1px;
+
+  margin-bottom: 20px;
+
+  box-shadow:
+    0 5px 10px rgba(0,0,0,0.12);
+}
+
+
+/* =====================================================
+   ROLE
+===================================================== */
+
+.experience-role {
+  font-family: "DM Mono", monospace;
+
+  font-size: 10px;
+
+  letter-spacing: 2px;
+
+  color: var(--gold);
+
+  margin-bottom: 7px;
+}
+
+
+/* =====================================================
+   COMPANY
+===================================================== */
+
+.experience-card h3 {
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: 34px;
+
+  font-weight: 600;
+
+  line-height: 1.05;
+
+  color: #211f1b;
+}
+
+.experience-location {
+  font-size: 12px;
+
+  color: #625b52;
+
+  margin-top: 7px;
+}
+
+
+/* =====================================================
+   DIVIDER
+===================================================== */
+
+.experience-divider {
+  width: 100%;
+
+  height: 1px;
+
+  background: rgba(70,60,45,0.16);
+
+  margin: 22px 0;
+}
+
+
+/* =====================================================
+   DESCRIPTION
+===================================================== */
+
+.experience-description {
+  font-size: 13px;
+
+  line-height: 1.7;
+
+  color: #4d4841;
+
+  max-width: 400px;
+}
+
+
+/* =====================================================
+   TECHNOLOGY TAGS
+===================================================== */
+
+.experience-tags {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 8px;
+
+  margin-top: 20px;
+}
+
+.experience-tags span {
+  padding: 6px 11px;
+
+  border-radius: 20px;
+
+  border: 1px solid rgba(70,60,45,0.15);
+
+  background: rgba(255,255,255,0.45);
+
+  font-size: 9px;
+
+  color: #4f4941;
+}
+
+
+/* =====================================================
+   BOTTOM
+===================================================== */
+
+.experience-bottom {
+  display: flex;
+
+  align-items: center;
+
+  gap: 15px;
+
+  margin-top: 20px;
+
+  margin-bottom: 10px;
+
+  color: #756c5f;
+}
+
+.experience-bottom span {
+  font-family: "DM Mono", monospace;
+
+  font-size: 10px;
+}
+
+.experience-bottom div {
+  height: 1px;
+
+  flex: 1;
+
+  background: rgba(80,70,55,0.18);
+}
+
+.experience-bottom p {
+  font-family: "DM Mono", monospace;
+
+  font-size: 9px;
+
+  letter-spacing: 2px;
+
+  white-space: nowrap;
+}
+/* =====================================================
+   EXPERIENCE CARD CONTENT
+===================================================== */
+
+.experience-card {
+  position: relative;
+
+  overflow: hidden;
+}
+
+.experience-card-content {
+  position: relative;
+
+  z-index: 3;
+}
+
+
+/* =====================================================
+   COMPANY LOGO WATERMARK
+===================================================== */
+
+.company-watermark {
+  position: absolute;
+
+  z-index: 1;
+
+  pointer-events: none;
+
+  object-fit: contain;
+
+  user-select: none;
+
+  filter: grayscale(100%);
+
+  opacity: 0.08;
+}
+
+
+/* =====================================================
+   TRIOS LOGO
+===================================================== */
+
+.trios-logo {
+  width: 300px;
+
+  height: 300px;
+
+  right: -65px;
+
+  bottom: -55px;
+
+  transform: rotate(-8deg);
+}
+
+
+/* =====================================================
+   INFOSYS LOGO
+===================================================== */
+
+.infosys-logo {
+  width: 350px;
+
+  height: 230px;
+
+  right: -65px;
+
+  bottom: -20px;
+
+  transform: rotate(-4deg);
+
+  opacity: 0.09;
+}
+/* =====================================================
+   EXPERIENCE PAGE
+===================================================== */
+
+.experience-page {
+  position: relative;
+
+  min-height: 100vh;
+
+  background:
+    linear-gradient(
+      rgba(255, 255, 255, 0.12),
+      rgba(255, 255, 255, 0.02)
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0px,
+      transparent 27px,
+      rgba(70, 65, 55, 0.035) 28px
+    ),
+    var(--paper);
+
+  overflow: hidden;
+}
+
+
+/* =====================================================
+   EXPERIENCE HEADING
+===================================================== */
+
+.experience-heading {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: flex-start;
+
+  margin-top: 42px;
+
+  margin-bottom: 32px;
+}
+
+.experience-eyebrow {
+  font-family: "DM Mono", monospace;
+
+  font-size: 11px;
+
+  letter-spacing: 3px;
+
+  color: #625b50;
+
+  margin-bottom: 10px;
+}
+
+.experience-heading h2 {
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: clamp(55px, 5vw, 72px);
+
+  line-height: 0.95;
+
+  font-weight: 600;
+
+  color: #211f1b;
+}
+
+.experience-heading h2 span {
+  color: var(--gold);
+}
+
+
+/* =====================================================
+   HANDWRITTEN NOTE
+===================================================== */
+
+.experience-note {
+  font-family: "Caveat", cursive;
+
+  font-size: 27px;
+
+  line-height: 0.9;
+
+  color: #756a59;
+
+  transform: rotate(-7deg);
+
+  margin-right: 45px;
+
+  margin-top: 10px;
+}
+
+
+/* =====================================================
+   EXPERIENCE CARDS
+===================================================== */
+
+.experience-cards {
+  flex: 1;
+
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 28px;
+
+  align-items: center;
+
+  max-width: 950px;
+
+  margin: 0 auto;
+}
+
+
+/* =====================================================
+   EXPERIENCE CARD
+===================================================== */
+
+.experience-card {
+  position: relative;
+
+  min-height: 390px;
+
+  padding: 30px;
+
+  /*
+     IMPORTANT:
+     Use an almost-solid paper background.
+  */
+
+  background: rgba(247, 241, 228, 0.94);
+
+  border: 1px solid rgba(63, 55, 44, 0.16);
+
+  border-radius: 6px;
+
+  overflow: hidden;
+
+  box-shadow:
+    0 12px 25px rgba(0, 0, 0, 0.14);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.experience-card:hover {
+  transform: translateY(-7px);
+
+  box-shadow:
+    0 20px 35px rgba(0, 0, 0, 0.18);
+}
+
+
+/* =====================================================
+   INFOSYS FEATURED CARD
+===================================================== */
+
+.experience-card.featured {
+  background: rgba(249, 243, 230, 0.95);
+
+  border-color: rgba(168, 115, 24, 0.3);
+}
+
+
+/* =====================================================
+   CARD CONTENT
+===================================================== */
+
+.experience-card-content {
+  position: relative;
+
+  z-index: 5;
+}
+
+
+/* =====================================================
+   COMPANY LOGO WATERMARK
+===================================================== */
+
+.company-watermark {
+  position: absolute;
+
+  z-index: 1;
+
+  pointer-events: none;
+
+  user-select: none;
+
+  object-fit: contain;
+
+  /*
+     Keep the logo recognizable
+     but subtle.
+  */
+
+  opacity: 0.09;
+
+  filter: grayscale(100%);
+
+  mix-blend-mode: multiply;
+}
+
+
+/* TRIOS */
+
+.trios-logo {
+  width: 280px;
+
+  height: 280px;
+
+  right: -45px;
+
+  bottom: -55px;
+
+  transform: rotate(-7deg);
+}
+
+
+/* INFOSYS */
+
+.infosys-logo {
+  width: 330px;
+
+  height: 230px;
+
+  right: -55px;
+
+  bottom: -25px;
+
+  transform: rotate(-4deg);
+
+  opacity: 0.10;
+}
+
+
+/* =====================================================
+   TOP ROW
+===================================================== */
+
+.experience-card-top {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  margin-bottom: 22px;
+}
+
+.experience-number {
+  font-family: "DM Mono", monospace;
+
+  font-size: 12px;
+
+  color: var(--gold);
+
+  letter-spacing: 1px;
+}
+
+.experience-date {
+  font-family: "DM Mono", monospace;
+
+  font-size: 10px;
+
+  letter-spacing: 1px;
+
+  color: #625b51;
+}
+
+
+/* =====================================================
+   ICON
+===================================================== */
+
+.experience-icon {
+  width: 54px;
+
+  height: 54px;
+
+  display: grid;
+
+  place-items: center;
+
+  background: #29251f;
+
+  color: #f4ead7;
+
+  border-radius: 9px;
+
+  font-family: "DM Mono", monospace;
+
+  font-size: 13px;
+
+  letter-spacing: 1px;
+
+  margin-bottom: 20px;
+}
+
+
+/* =====================================================
+   ROLE
+===================================================== */
+
+.experience-role {
+  font-family: "DM Mono", monospace;
+
+  font-size: 10px;
+
+  letter-spacing: 2px;
+
+  color: var(--gold);
+
+  margin-bottom: 7px;
+}
+
+
+/* =====================================================
+   COMPANY NAME
+===================================================== */
+
+.experience-card h3 {
+  font-family: "Cormorant Garamond", serif;
+
+  font-size: 34px;
+
+  font-weight: 600;
+
+  line-height: 1.05;
+
+  color: #211f1b;
+}
+
+.experience-location {
+  font-size: 12px;
+
+  color: #625b52;
+
+  margin-top: 7px;
+}
+
+
+/* =====================================================
+   DIVIDER
+===================================================== */
+
+.experience-divider {
+  width: 100%;
+
+  height: 1px;
+
+  background: rgba(70, 60, 45, 0.16);
+
+  margin: 22px 0;
+}
+
+
+/* =====================================================
+   DESCRIPTION
+===================================================== */
+
+.experience-description {
+  font-size: 13px;
+
+  line-height: 1.7;
+
+  color: #4d4841;
+
+  max-width: 400px;
+}
+
+
+/* =====================================================
+   TECHNOLOGY TAGS
+===================================================== */
+
+.experience-tags {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 8px;
+
+  margin-top: 20px;
+}
+
+.experience-tags span {
+  padding: 6px 11px;
+
+  border-radius: 20px;
+
+  border: 1px solid rgba(70, 60, 45, 0.15);
+
+  background: rgba(255, 255, 255, 0.65);
+
+  font-size: 9px;
+
+  color: #4f4941;
+}
+
+
+/* =====================================================
+   BOTTOM
+===================================================== */
+
+.experience-bottom {
+  display: flex;
+
+  align-items: center;
+
+  gap: 15px;
+
+  margin-top: 20px;
+
+  margin-bottom: 10px;
+
+  color: #756c5f;
+}
+
+.experience-bottom span {
+  font-family: "DM Mono", monospace;
+
+  font-size: 10px;
+}
+
+.experience-bottom div {
+  height: 1px;
+
+  flex: 1;
+
+  background: rgba(80, 70, 55, 0.18);
+}
+
+.experience-bottom p {
+  font-family: "DM Mono", monospace;
+
+  font-size: 9px;
+
+  letter-spacing: 2px;
+
+  white-space: nowrap;
+}
+/* =====================================================
+   EXPERIENCE BACKGROUND IMAGES
+===================================================== */
+
+.experience-card {
+  position: relative;
+  overflow: hidden;
+}
+
+
+/* Full card image */
+
+.experience-bg {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  object-position: center;
+
+  z-index: 0;
+
+  opacity: 1;
+
+  pointer-events: none;
+}
+
+
+/* =====================================================
+   IMAGE OVERLAY
+===================================================== */
+
+.experience-bg-overlay {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 1;
+
+  /*
+     Cream overlay keeps the image visible
+     while making the text readable.
+  */
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(247, 241, 228, 0.88),
+      rgba(247, 241, 228, 0.67)
+    );
+
+  pointer-events: none;
+}
+
+
+/* =====================================================
+   CARD CONTENT ABOVE IMAGE
+===================================================== */
+
+.experience-card-content {
+  position: relative;
+
+  z-index: 4;
+}
+
+
+/* =====================================================
+   COMPANY LOGO
+===================================================== */
+
+.company-watermark {
+  position: absolute;
+
+  z-index: 2;
+
+  object-fit: contain;
+
+  pointer-events: none;
+
+  opacity: 0.16;
+
+  filter: grayscale(100%);
+
+  mix-blend-mode: multiply;
+}
+
+
+/* Trios */
+
+.trios-logo {
+  width: 230px;
+  height: 230px;
+
+  right: -30px;
+  bottom: -40px;
+
+  transform: rotate(-6deg);
+}
+
+
+/* Infosys */
+
+.infosys-logo {
+  width: 280px;
+  height: 190px;
+
+  right: -40px;
+  bottom: -20px;
+
+  transform: rotate(-4deg);
+}
+
+
+/* =====================================================
+   TRIOS IMAGE
+===================================================== */
+
+.trios-card .experience-bg {
+  object-position: center;
+}
+
+
+/* =====================================================
+   INFOSYS IMAGE
+===================================================== */
+
+.infosys-card .experience-bg {
+  object-position: center;
+}
+
+
+/* =====================================================
+   TEXT CONTRAST
+===================================================== */
+
+.experience-card h3,
+.experience-card p,
+.experience-card span {
+  text-shadow:
+    0 1px 2px rgba(255, 255, 255, 0.65);
+}
+
+
+/* Keep dark icon clean */
+
+.experience-card .experience-icon {
+  text-shadow: none;
+}
+.skill-icon {
+  width: 42px;
+  height: 42px;
+
+  border-radius: 9px;
+
+  background: rgba(255, 255, 255, 0.55);
+
+  display: grid;
+  place-items: center;
+
+  font-size: 28px;
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease;
+}
+
+.skill-card:hover .skill-icon {
+  transform: translateY(-3px) scale(1.08);
+
+  background: rgba(255, 255, 255, 0.85);
+}
+
+.skill-icon i {
+  font-size: 27px;
+  line-height: 1;
+}
+/* =====================================================
+   SKILLS PAGE - CLEAN LOGO LAYOUT
+   ===================================================== */
+
+.skills-page {
+  overflow: hidden;
+}
+
+.skills-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 28px;
+}
+
+.skills-eyebrow {
+  margin: 0 0 7px;
+  font-size: 12px;
+  letter-spacing: 2.5px;
+  font-weight: 700;
+  color: #9a6815;
+}
+
+.skills-heading h2 {
+  margin: 0;
+  font-size: 34px;
+  line-height: 1.15;
+  font-weight: 700;
+  letter-spacing: -1px;
+}
+
+.skills-heading h2 span {
+  color: #a87318;
+}
+
+.skills-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.skills-row {
+  display: grid;
+  grid-template-columns: 125px 1fr;
+  align-items: center;
+  border-bottom: 1px solid rgba(90, 70, 40, 0.18);
+  padding-bottom: 18px;
+}
+
+.skills-category {
+  font-size: 17px;
+  font-weight: 700;
+  color: #5b4630;
+  letter-spacing: 0.2px;
+}
+
+.skills-items {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 25px;
+}
+
+.skill-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 105px;
+}
+
+.skill-logo {
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.skill-logo i {
+  font-size: 31px;
+  line-height: 1;
+}
+
+.skill-item span {
+  font-size: 16px;
+  line-height: 1.3;
+  font-weight: 600;
+  color: #3f3327;
+  white-space: nowrap;
+}
+
+
+/* =====================================================
+   HOME PAGE MINI SKILL LOGOS
+   ===================================================== */
+
+.mini-skill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.mini-skill-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mini-skill-logo i {
+  font-size: 19px;
+  line-height: 1;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+   ===================================================== */
+
+@media (max-width: 900px) {
+
+  .skills-row {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .skills-items {
+    gap: 18px;
+  }
+
+  .skills-heading h2 {
+    font-size: 30px;
+  }
+
+}
+
+@media (max-width: 600px) {
+
+  .skills-heading {
+    margin-bottom: 22px;
+  }
+
+  .skills-heading h2 {
+    font-size: 27px;
+  }
+
+  .skills-items {
+    gap: 15px;
+  }
+
+  .skill-item {
+    min-width: 120px;
+  }
+
+  .skill-logo {
+    width: 31px;
+    height: 31px;
+  }
+
+  .skill-logo i {
+    font-size: 27px;
+  }
+
+  .skill-item span {
+    font-size: 14px;
+  }
+
+}
+/* =====================================================
+   SKILLS PAGE
+   OPTION 2 — TIMELINE STYLE
+   ===================================================== */
+
+.skills-page {
+  overflow: hidden;
+}
+
+
+/* =====================================================
+   HEADER
+   ===================================================== */
+
+.skills-timeline-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  margin-top: 16px;
+  margin-bottom: 22px;
+}
+
+
+.skills-eyebrow {
+  margin: 0 0 4px;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  letter-spacing: 2.8px;
+
+  color: #9a6815;
+}
+
+
+.skills-timeline-header h2 {
+  margin: 0;
+
+  font-size: 46px;
+  line-height: 1;
+
+  font-weight: 700;
+
+  letter-spacing: -1.8px;
+
+  color: #30271f;
+}
+
+
+.skills-header-note {
+  margin-top: 3px;
+  margin-right: 18px;
+
+  font-family: "Caveat", cursive;
+
+  font-size: 22px;
+  line-height: 1.05;
+
+  text-align: right;
+
+  color: #756653;
+
+  transform: rotate(-3deg);
+}
+
+
+/* =====================================================
+   TIMELINE
+   ===================================================== */
+
+.skills-timeline {
+  width: 100%;
+
+  border-top: 1px solid rgba(82, 64, 43, 0.22);
+}
+
+
+.skills-timeline-row {
+  display: grid;
+
+  grid-template-columns: 58px 120px 1fr;
+
+  min-height: 78px;
+
+  border-bottom: 1px solid rgba(82, 64, 43, 0.18);
+
+  position: relative;
+}
+
+
+/* =====================================================
+   TIMELINE NUMBER
+   ===================================================== */
+
+.skills-timeline-marker {
+  position: relative;
+
+  display: flex;
+
+  justify-content: center;
+
+  padding-top: 19px;
+}
+
+
+.skills-timeline-marker span {
+  width: 31px;
+  height: 31px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #a87318;
+
+  color: #fff;
+
+  font-family: "Courier New", monospace;
+
+  font-size: 10px;
+
+  font-weight: 700;
+
+  position: relative;
+
+  z-index: 3;
+}
+
+
+/* =====================================================
+   VERTICAL LINE
+   ===================================================== */
+
+.skills-timeline-line {
+  position: absolute;
+
+  top: 50px;
+
+  left: 50%;
+
+  width: 1px;
+
+  height: calc(100% - 25px);
+
+  background: rgba(168, 115, 24, 0.35);
+
+  transform: translateX(-50%);
+}
+
+
+/* =====================================================
+   CATEGORY
+   ===================================================== */
+
+.skills-timeline-category {
+  display: flex;
+
+  align-items: center;
+
+  padding-left: 5px;
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  letter-spacing: 1.5px;
+
+  text-transform: uppercase;
+
+  color: #594633;
+}
+
+
+/* =====================================================
+   SKILLS
+   ===================================================== */
+
+.skills-timeline-items {
+  display: flex;
+
+  align-items: center;
+
+  flex-wrap: wrap;
+
+  gap: 28px;
+
+  padding: 12px 10px 12px 8px;
+}
+
+
+.timeline-skill {
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  min-width: 90px;
+
+  transition:
+    transform 0.25s ease,
+    opacity 0.25s ease;
+}
+
+
+.timeline-skill:hover {
+  transform: translateY(-3px);
+}
+
+
+/* =====================================================
+   LOGOS
+   ===================================================== */
+
+.timeline-skill-logo {
+  width: 40px;
+  height: 40px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+}
+
+
+.timeline-skill-logo i {
+  font-size: 34px;
+
+  line-height: 1;
+}
+
+
+/* =====================================================
+   SKILL NAME
+   ===================================================== */
+
+.timeline-skill span {
+  font-size: 14px;
+
+  font-weight: 600;
+
+  color: #40352a;
+
+  white-space: nowrap;
+}
+
+
+.timeline-skill:hover span {
+  color: #a87318;
+}
+
+
+/* =====================================================
+   BOTTOM
+   ===================================================== */
+
+.skills-bottom-note {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  margin-top: 16px;
+
+  font-family: "Courier New", monospace;
+
+  font-size: 8px;
+
+  font-weight: 700;
+
+  letter-spacing: 1.8px;
+
+  color: #88745e;
+}
+
+
+.skills-bottom-note div {
+  height: 1px;
+
+  flex: 1;
+
+  background: rgba(82, 64, 43, 0.18);
+}
+
+
+.skills-bottom-note p {
+  margin: 0;
+
+  white-space: nowrap;
+}
+
+
+/* =====================================================
+   HOME MINI SKILLS
+   Keep these logos working
+   ===================================================== */
+
+.mini-skill strong {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+}
+
+
+.mini-skill strong i {
+  font-size: 18px;
+
+  line-height: 1;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+   ===================================================== */
+
+@media (max-width: 900px) {
+
+  .skills-timeline-row {
+    grid-template-columns: 50px 105px 1fr;
+  }
+
+  .skills-timeline-items {
+    gap: 20px;
+  }
+
+  .timeline-skill {
+    min-width: 85px;
+  }
+
+}
+
+
+@media (max-width: 700px) {
+
+  .skills-timeline-header h2 {
+    font-size: 38px;
+  }
+
+  .skills-header-note {
+    font-size: 18px;
+  }
+
+  .skills-timeline-row {
+    grid-template-columns: 45px 95px 1fr;
+  }
+
+  .skills-timeline-category {
+    font-size: 12px;
+  }
+
+  .skills-timeline-items {
+    gap: 15px;
+  }
+
+  .timeline-skill-logo {
+    width: 34px;
+    height: 34px;
+  }
+
+  .timeline-skill-logo i {
+    font-size: 29px;
+  }
+
+  .timeline-skill span {
+    font-size: 12px;
+  }
+
+}
+
+
+@media (max-width: 560px) {
+
+  .skills-header-note {
+    display: none;
+  }
+
+  .skills-timeline-row {
+    grid-template-columns: 42px 1fr;
+
+    padding-bottom: 12px;
+  }
+
+  .skills-timeline-category {
+    padding-left: 0;
+
+    align-items: center;
+  }
+
+  .skills-timeline-items {
+    grid-column: 2;
+
+    padding-left: 0;
+
+    margin-top: -12px;
+  }
+
+  .skills-bottom-note p {
+    display: none;
+  }
+
+}
+/* =====================================================
+   SKILLS PAGE
+   OPTION 2 — TIMELINE STYLE
+   ===================================================== */
+
+.skills-page {
+  overflow: hidden;
+}
+
+
+/* =====================================================
+   HEADER
+   ===================================================== */
+
+.skills-timeline-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  margin-top: 16px;
+  margin-bottom: 22px;
+}
+
+
+.skills-eyebrow {
+  margin: 0 0 4px;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  letter-spacing: 2.8px;
+
+  color: #9a6815;
+}
+
+
+.skills-timeline-header h2 {
+  margin: 0;
+
+  font-size: 46px;
+  line-height: 1;
+
+  font-weight: 700;
+
+  letter-spacing: -1.8px;
+
+  color: #30271f;
+}
+
+
+.skills-header-note {
+  margin-top: 3px;
+  margin-right: 18px;
+
+  font-family: "Caveat", cursive;
+
+  font-size: 22px;
+  line-height: 1.05;
+
+  text-align: right;
+
+  color: #756653;
+
+  transform: rotate(-3deg);
+}
+
+
+/* =====================================================
+   TIMELINE
+   ===================================================== */
+
+.skills-timeline {
+  width: 100%;
+
+  border-top: 1px solid rgba(82, 64, 43, 0.22);
+}
+
+
+.skills-timeline-row {
+  display: grid;
+
+  grid-template-columns: 58px 120px 1fr;
+
+  min-height: 78px;
+
+  border-bottom: 1px solid rgba(82, 64, 43, 0.18);
+
+  position: relative;
+}
+
+
+/* =====================================================
+   TIMELINE NUMBER
+   ===================================================== */
+
+.skills-timeline-marker {
+  position: relative;
+
+  display: flex;
+
+  justify-content: center;
+
+  padding-top: 19px;
+}
+
+
+.skills-timeline-marker span {
+  width: 31px;
+  height: 31px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #a87318;
+
+  color: #fff;
+
+  font-family: "Courier New", monospace;
+
+  font-size: 10px;
+
+  font-weight: 700;
+
+  position: relative;
+
+  z-index: 3;
+}
+
+
+/* =====================================================
+   VERTICAL LINE
+   ===================================================== */
+
+.skills-timeline-line {
+  position: absolute;
+
+  top: 50px;
+
+  left: 50%;
+
+  width: 1px;
+
+  height: calc(100% - 25px);
+
+  background: rgba(168, 115, 24, 0.35);
+
+  transform: translateX(-50%);
+}
+
+
+/* =====================================================
+   CATEGORY
+   ===================================================== */
+
+.skills-timeline-category {
+  display: flex;
+
+  align-items: center;
+
+  padding-left: 5px;
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  letter-spacing: 1.5px;
+
+  text-transform: uppercase;
+
+  color: #594633;
+}
+
+
+/* =====================================================
+   SKILLS
+   ===================================================== */
+
+.skills-timeline-items {
+  display: flex;
+
+  align-items: center;
+
+  flex-wrap: wrap;
+
+  gap: 28px;
+
+  padding: 12px 10px 12px 8px;
+}
+
+
+.timeline-skill {
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  min-width: 90px;
+
+  transition:
+    transform 0.25s ease,
+    opacity 0.25s ease;
+}
+
+
+.timeline-skill:hover {
+  transform: translateY(-3px);
+}
+
+
+/* =====================================================
+   LOGOS
+   ===================================================== */
+
+.timeline-skill-logo {
+  width: 40px;
+  height: 40px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+}
+
+
+.timeline-skill-logo i {
+  font-size: 34px;
+
+  line-height: 1;
+}
+
+
+/* =====================================================
+   SKILL NAME
+   ===================================================== */
+
+.timeline-skill span {
+  font-size: 14px;
+
+  font-weight: 600;
+
+  color: #40352a;
+
+  white-space: nowrap;
+}
+
+
+.timeline-skill:hover span {
+  color: #a87318;
+}
+
+
+/* =====================================================
+   BOTTOM
+   ===================================================== */
+
+.skills-bottom-note {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  margin-top: 16px;
+
+  font-family: "Courier New", monospace;
+
+  font-size: 8px;
+
+  font-weight: 700;
+
+  letter-spacing: 1.8px;
+
+  color: #88745e;
+}
+
+
+.skills-bottom-note div {
+  height: 1px;
+
+  flex: 1;
+
+  background: rgba(82, 64, 43, 0.18);
+}
+
+
+.skills-bottom-note p {
+  margin: 0;
+
+  white-space: nowrap;
+}
+
+
+/* =====================================================
+   HOME MINI SKILLS
+   Keep these logos working
+   ===================================================== */
+
+.mini-skill strong {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+}
+
+
+.mini-skill strong i {
+  font-size: 18px;
+
+  line-height: 1;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+   ===================================================== */
+
+@media (max-width: 900px) {
+
+  .skills-timeline-row {
+    grid-template-columns: 50px 105px 1fr;
+  }
+
+  .skills-timeline-items {
+    gap: 20px;
+  }
+
+  .timeline-skill {
+    min-width: 85px;
+  }
+
+}
+
+
+@media (max-width: 700px) {
+
+  .skills-timeline-header h2 {
+    font-size: 38px;
+  }
+
+  .skills-header-note {
+    font-size: 18px;
+  }
+
+  .skills-timeline-row {
+    grid-template-columns: 45px 95px 1fr;
+  }
+
+  .skills-timeline-category {
+    font-size: 12px;
+  }
+
+  .skills-timeline-items {
+    gap: 15px;
+  }
+
+  .timeline-skill-logo {
+    width: 34px;
+    height: 34px;
+  }
+
+  .timeline-skill-logo i {
+    font-size: 29px;
+  }
+
+  .timeline-skill span {
+    font-size: 12px;
+  }
+
+}
+
+
+@media (max-width: 560px) {
+
+  .skills-header-note {
+    display: none;
+  }
+
+  .skills-timeline-row {
+    grid-template-columns: 42px 1fr;
+
+    padding-bottom: 12px;
+  }
+
+  .skills-timeline-category {
+    padding-left: 0;
+
+    align-items: center;
+  }
+
+  .skills-timeline-items {
+    grid-column: 2;
+
+    padding-left: 0;
+
+    margin-top: -12px;
+  }
+
+  .skills-bottom-note p {
+    display: none;
+  }
+
+}
+/* =========================================================
+   SKILLS PAGE
+   ========================================================= */
+
+.skills-page {
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   SKILLS HEADER
+   ========================================================= */
+
+.skills-timeline-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  margin-top: 16px;
+  margin-bottom: 22px;
+}
+
+
+/* Small heading */
+
+.skills-eyebrow {
+  margin: 0 0 6px;
+
+  font-size: 11px;
+  font-weight: 700;
+
+  letter-spacing: 2.8px;
+
+  color: #9a6815;
+
+  text-transform: uppercase;
+}
+
+
+/* Main heading */
+
+.skills-timeline-header h2 {
+  margin: 0;
+
+  font-size: 46px;
+  line-height: 1;
+
+  font-weight: 700;
+
+  letter-spacing: -1.8px;
+
+  color: #30271f;
+}
+
+
+/* =========================================================
+   HANDWRITTEN NOTE
+   ========================================================= */
+
+.skills-header-note {
+  margin-top: 3px;
+  margin-right: 18px;
+
+  font-family: "Caveat", cursive;
+
+  font-size: 22px;
+  line-height: 1.05;
+
+  text-align: right;
+
+  color: #756653;
+
+  transform: rotate(-3deg);
+}
+
+
+/* =========================================================
+   MAIN TIMELINE
+   ========================================================= */
+
+.skills-timeline {
+  width: 100%;
+
+  border-top: 1px solid rgba(82, 64, 43, 0.22);
+}
+
+
+/* =========================================================
+   TIMELINE ROW
+   ========================================================= */
+
+.skills-timeline-row {
+  display: grid;
+
+  grid-template-columns: 58px 120px 1fr;
+
+  min-height: 78px;
+
+  position: relative;
+
+  border-bottom: 1px solid rgba(82, 64, 43, 0.18);
+}
+
+
+/* =========================================================
+   TIMELINE NUMBER AREA
+   ========================================================= */
+
+.skills-timeline-marker {
+  position: relative;
+
+  display: flex;
+
+  justify-content: center;
+
+  padding-top: 19px;
+}
+
+
+/* Number circle */
+
+.skills-timeline-marker span {
+  width: 31px;
+  height: 31px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #a87318;
+
+  color: #ffffff;
+
+  font-family: "Courier New", monospace;
+
+  font-size: 10px;
+
+  font-weight: 700;
+
+  position: relative;
+
+  z-index: 3;
+}
+
+
+/* =========================================================
+   VERTICAL LINE
+   ========================================================= */
+
+.skills-timeline-line {
+  position: absolute;
+
+  top: 50px;
+
+  left: 50%;
+
+  width: 1px;
+
+  height: calc(100% - 25px);
+
+  background: rgba(168, 115, 24, 0.35);
+
+  transform: translateX(-50%);
+}
+
+
+/* =========================================================
+   CATEGORY
+   ========================================================= */
+
+.skills-timeline-category {
+  display: flex;
+
+  align-items: center;
+
+  padding-left: 5px;
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  letter-spacing: 1.5px;
+
+  text-transform: uppercase;
+
+  color: #594633;
+}
+
+
+/* =========================================================
+   SKILL ITEMS
+   ========================================================= */
+
+.skills-timeline-items {
+  display: flex;
+
+  align-items: center;
+
+  flex-wrap: wrap;
+
+  gap: 28px;
+
+  padding: 12px 10px 12px 8px;
+}
+
+
+/* =========================================================
+   INDIVIDUAL SKILL
+   ========================================================= */
+
+.timeline-skill {
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  min-width: 90px;
+
+  transition:
+    transform 0.25s ease,
+    opacity 0.25s ease;
+}
+
+
+/* Hover */
+
+.timeline-skill:hover {
+  transform: translateY(-3px);
+}
+
+
+/* =========================================================
+   LOGO CONTAINER
+   ========================================================= */
+
+.timeline-skill-logo {
+  width: 40px;
+  height: 40px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+}
+
+
+/* =========================================================
+   DEVICON LOGOS
+   ========================================================= */
+
+.timeline-skill-logo i {
+  font-size: 34px;
+
+  line-height: 1;
+
+  display: block;
+}
+
+
+/* =========================================================
+   SKILL NAME
+   ========================================================= */
+
+.timeline-skill span {
+  font-size: 14px;
+
+  font-weight: 600;
+
+  color: #40352a;
+
+  white-space: nowrap;
+
+  transition: color 0.2s ease;
+}
+
+
+/* Hover skill name */
+
+.timeline-skill:hover > span {
+  color: #a87318;
+}
+
+
+/* =========================================================
+   REST API LOGO
+   ========================================================= */
+
+.api-logo {
+  width: 34px;
+  height: 34px;
+
+  border: 1.5px solid #a87318;
+
+  border-radius: 8px;
+
+  background: rgba(168, 115, 24, 0.08);
+}
+
+
+.api-logo span {
+  font-family: "Courier New", monospace;
+
+  font-size: 9px !important;
+
+  font-weight: 800 !important;
+
+  letter-spacing: 0.5px;
+
+  color: #a87318 !important;
+
+  line-height: 1;
+}
+
+
+/* =========================================================
+   BOTTOM NOTE
+   ========================================================= */
+
+.skills-bottom-note {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  margin-top: 16px;
+
+  font-family: "Courier New", monospace;
+
+  font-size: 8px;
+
+  font-weight: 700;
+
+  letter-spacing: 1.8px;
+
+  color: #88745e;
+}
+
+
+/* Lines */
+
+.skills-bottom-note div {
+  height: 1px;
+
+  flex: 1;
+
+  background: rgba(82, 64, 43, 0.18);
+}
+
+
+/* Text */
+
+.skills-bottom-note p {
+  margin: 0;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   RESPONSIVE — TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  .skills-timeline-row {
+    grid-template-columns: 52px 105px 1fr;
+  }
+
+
+  .skills-timeline-items {
+    gap: 20px;
+  }
+
+
+  .timeline-skill {
+    min-width: 80px;
+  }
+
+
+  .timeline-skill-logo {
+    width: 36px;
+    height: 36px;
+  }
+
+
+  .timeline-skill-logo i {
+    font-size: 30px;
+  }
+
+
+  .timeline-skill span {
+    font-size: 13px;
+  }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE — MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+  .skills-timeline-header {
+    margin-bottom: 18px;
+  }
+
+
+  .skills-timeline-header h2 {
+    font-size: 38px;
+  }
+
+
+  .skills-header-note {
+    font-size: 19px;
+
+    margin-right: 8px;
+  }
+
+
+  .skills-timeline-row {
+    grid-template-columns: 45px 90px 1fr;
+  }
+
+
+  .skills-timeline-category {
+    font-size: 11px;
+
+    letter-spacing: 1px;
+  }
+
+
+  .skills-timeline-items {
+    gap: 15px;
+
+    padding-left: 4px;
+  }
+
+
+  .timeline-skill {
+    gap: 7px;
+
+    min-width: 75px;
+  }
+
+
+  .timeline-skill-logo {
+    width: 32px;
+    height: 32px;
+  }
+
+
+  .timeline-skill-logo i {
+    font-size: 27px;
+  }
+
+
+  .timeline-skill span {
+    font-size: 11px;
+  }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE — SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 560px) {
+
+  .skills-timeline-header {
+    margin-top: 10px;
+  }
+
+
+  .skills-eyebrow {
+    font-size: 9px;
+
+    letter-spacing: 2px;
+  }
+
+
+  .skills-timeline-header h2 {
+    font-size: 32px;
+  }
+
+
+  .skills-header-note {
+    font-size: 16px;
+  }
+
+
+  .skills-timeline-row {
+    grid-template-columns: 40px 78px 1fr;
+
+    min-height: 72px;
+  }
+
+
+  .skills-timeline-marker {
+    padding-top: 17px;
+  }
+
+
+  .skills-timeline-marker span {
+    width: 27px;
+    height: 27px;
+
+    font-size: 9px;
+  }
+
+
+  .skills-timeline-line {
+    top: 44px;
+  }
+
+
+  .skills-timeline-category {
+    font-size: 9px;
+
+    letter-spacing: 0.8px;
+
+    padding-left: 2px;
+  }
+
+
+  .skills-timeline-items {
+    gap: 10px;
+
+    padding: 10px 4px;
+  }
+
+
+  .timeline-skill {
+    min-width: 65px;
+
+    gap: 5px;
+  }
+
+
+  .timeline-skill-logo {
+    width: 28px;
+    height: 28px;
+  }
+
+
+  .timeline-skill-logo i {
+    font-size: 23px;
+  }
+
+
+  .timeline-skill span {
+    font-size: 10px;
+  }
+
+
+  .api-logo {
+    width: 27px;
+    height: 27px;
+
+    border-radius: 6px;
+  }
+
+
+  .api-logo span {
+    font-size: 7px !important;
+  }
+
+
+  .skills-bottom-note {
+    gap: 7px;
+
+    font-size: 6px;
+
+    letter-spacing: 1px;
+  }
+
+}
+/* =========================================================
+   PROJECTS PAGE
+   ========================================================= */
+
+.projects-page {
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   PROJECT HEADING
+   ========================================================= */
+
+.projects-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  margin-top: 18px;
+  margin-bottom: 22px;
+}
+
+
+.projects-title-block {
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* Small label */
+
+.projects-eyebrow {
+  margin: 0 0 6px;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  letter-spacing: 3px;
+
+  color: #a87318;
+
+  text-transform: uppercase;
+}
+
+
+/* Main heading */
+
+.projects-heading h2 {
+  margin: 0;
+
+  font-size: 48px;
+
+  line-height: 1.05;
+
+  font-weight: 700;
+
+  letter-spacing: -1.8px;
+
+  color: #30271f;
+}
+
+
+.projects-heading h2 span {
+  color: #a87318;
+}
+
+
+/* =========================================================
+   HANDWRITTEN NOTE
+   ========================================================= */
+
+.project-note {
+  margin-top: 3px;
+  margin-right: 20px;
+
+  font-family: "Caveat", cursive;
+
+  font-size: 23px;
+
+  line-height: 1.05;
+
+  text-align: right;
+
+  color: #756653;
+
+  transform: rotate(-4deg);
+}
+
+
+/* =========================================================
+   PROJECT LIST
+   ========================================================= */
+
+.projects-list {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* =========================================================
+   PROJECT CARD
+   ========================================================= */
+
+.project-card {
+  display: grid;
+
+  grid-template-columns: 185px 1fr;
+
+  gap: 32px;
+
+  position: relative;
+
+  padding: 20px 0;
+
+  border-top: 1px solid rgba(82, 64, 43, 0.22);
+
+  transition:
+    transform 0.3s ease,
+    padding-left 0.3s ease;
+}
+
+
+.project-card:last-child {
+  border-bottom: 1px solid rgba(82, 64, 43, 0.22);
+}
+
+
+/* Slight movement */
+
+.project-card:hover {
+  transform: translateX(5px);
+}
+
+
+/* =========================================================
+   PROJECT VISUAL
+   ========================================================= */
+
+.project-visual {
+  position: relative;
+
+  min-height: 150px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+}
+
+
+/* =========================================================
+   PROJECT LOGO BOX
+   ========================================================= */
+
+.project-logo-box {
+  width: 138px;
+  height: 138px;
+
+  padding: 13px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  background: #f7f1e6;
+
+  border: 1px solid rgba(82, 64, 43, 0.20);
+
+  border-radius: 16px;
+
+  box-shadow:
+    0 7px 18px rgba(57, 43, 29, 0.08);
+
+  transform: rotate(-2deg);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+
+/* Actual logo */
+
+.project-logo-box img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+
+  display: block;
+
+  border-radius: 9px;
+}
+
+
+/* Hover logo */
+
+.project-card:hover .project-logo-box {
+  transform: rotate(1deg) translateY(-5px);
+
+  box-shadow:
+    0 12px 25px rgba(57, 43, 29, 0.14);
+}
+
+
+/* =========================================================
+   PROJECT NUMBER
+   ========================================================= */
+
+.project-number {
+  position: absolute;
+
+  left: 5px;
+  bottom: 4px;
+
+  font-family: "Courier New", monospace;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  letter-spacing: 1.5px;
+
+  color: #a87318;
+}
+
+
+/* =========================================================
+   PROJECT INFORMATION
+   ========================================================= */
+
+.project-info {
+  min-width: 0;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+}
+
+
+/* =========================================================
+   PROJECT META
+   ========================================================= */
+
+.project-meta {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  margin-bottom: 5px;
+}
+
+
+.project-meta > span {
+  font-family: "Courier New", monospace;
+
+  font-size: 10px;
+
+  font-weight: 700;
+
+  letter-spacing: 1.8px;
+
+  color: #a87318;
+}
+
+
+.project-meta small {
+  font-family: "Courier New", monospace;
+
+  font-size: 10px;
+
+  font-weight: 700;
+
+  color: #88745e;
+}
+
+
+/* =========================================================
+   PROJECT TITLE
+   ========================================================= */
+
+.project-info h3 {
+  margin: 0;
+
+  font-size: 34px;
+
+  line-height: 1.05;
+
+  font-weight: 700;
+
+  letter-spacing: -0.8px;
+
+  color: #30271f;
+}
+
+
+/* =========================================================
+   PROJECT DESCRIPTION
+   ========================================================= */
+
+.project-info > p {
+  max-width: 760px;
+
+  margin: 11px 0 14px;
+
+  font-size: 14px;
+
+  line-height: 1.65;
+
+  color: #665648;
+}
+
+
+/* =========================================================
+   TECHNOLOGIES
+   ========================================================= */
+
+.project-tech {
+  display: flex;
+
+  align-items: center;
+
+  flex-wrap: wrap;
+
+  gap: 9px;
+}
+
+
+/* Technology pill */
+
+.project-tech > span {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  padding: 7px 11px;
+
+  border: 1px solid rgba(82, 64, 43, 0.18);
+
+  border-radius: 6px;
+
+  background: rgba(247, 241, 230, 0.70);
+
+  font-family: "Courier New", monospace;
+
+  font-size: 10px;
+
+  font-weight: 700;
+
+  color: #594633;
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+
+/* Technology icon */
+
+.project-tech > span i {
+  font-size: 17px;
+
+  line-height: 1;
+}
+
+
+/* Technology hover */
+
+.project-tech > span:hover {
+  transform: translateY(-2px);
+
+  background: rgba(168, 115, 24, 0.08);
+
+  border-color: rgba(168, 115, 24, 0.40);
+}
+
+
+/* =========================================================
+   PROJECT BOTTOM
+   ========================================================= */
+
+.project-bottom {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  margin-top: 15px;
+
+  padding-top: 11px;
+
+  border-top: 1px solid rgba(82, 64, 43, 0.14);
+}
+
+
+.project-category {
+  font-family: "Courier New", monospace;
+
+  font-size: 9px;
+
+  font-weight: 700;
+
+  letter-spacing: 1.7px;
+
+  color: #88745e;
+}
+
+
+/* Arrow */
+
+.project-arrow {
+  width: 34px;
+  height: 34px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(168, 115, 24, 0.35);
+
+  border-radius: 50%;
+
+  font-size: 20px;
+
+  color: #a87318;
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease;
+}
+
+
+.project-card:hover .project-arrow {
+  transform: translate(3px, -3px);
+
+  background: rgba(168, 115, 24, 0.08);
+}
+
+
+/* =========================================================
+   BOTTOM NOTE
+   ========================================================= */
+
+.projects-bottom {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  margin-top: 16px;
+
+  font-family: "Courier New", monospace;
+
+  font-size: 8px;
+
+  font-weight: 700;
+
+  letter-spacing: 1.8px;
+
+  color: #88745e;
+}
+
+
+.projects-bottom div {
+  height: 1px;
+
+  flex: 1;
+
+  background: rgba(82, 64, 43, 0.18);
+}
+
+
+.projects-bottom p {
+  margin: 0;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  .projects-heading h2 {
+    font-size: 42px;
+  }
+
+
+  .project-card {
+    grid-template-columns: 150px 1fr;
+
+    gap: 25px;
+
+    padding: 17px 0;
+  }
+
+
+  .project-visual {
+    min-height: 135px;
+  }
+
+
+  .project-logo-box {
+    width: 115px;
+    height: 115px;
+  }
+
+
+  .project-info h3 {
+    font-size: 29px;
+  }
+
+
+  .project-info > p {
+    font-size: 13px;
+  }
+
+
+  .project-tech > span {
+    padding: 6px 9px;
+
+    font-size: 9px;
+  }
+
+
+  .project-tech > span i {
+    font-size: 15px;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+  .projects-heading {
+    margin-bottom: 15px;
+  }
+
+
+  .projects-heading h2 {
+    font-size: 36px;
+  }
+
+
+  .projects-eyebrow {
+    font-size: 9px;
+
+    letter-spacing: 2px;
+  }
+
+
+  .project-note {
+    font-size: 18px;
+
+    margin-right: 8px;
+  }
+
+
+  .project-card {
+    grid-template-columns: 105px 1fr;
+
+    gap: 17px;
+
+    padding: 14px 0;
+  }
+
+
+  .project-visual {
+    min-height: 120px;
+  }
+
+
+  .project-logo-box {
+    width: 88px;
+    height: 88px;
+
+    padding: 9px;
+
+    border-radius: 12px;
+  }
+
+
+  .project-number {
+    left: 2px;
+    bottom: 2px;
+
+    font-size: 8px;
+  }
+
+
+  .project-meta > span {
+    font-size: 7px;
+
+    letter-spacing: 1px;
+  }
+
+
+  .project-meta small {
+    font-size: 8px;
+  }
+
+
+  .project-info h3 {
+    font-size: 24px;
+  }
+
+
+  .project-info > p {
+    margin: 7px 0 9px;
+
+    font-size: 11px;
+
+    line-height: 1.5;
+  }
+
+
+  .project-tech {
+    gap: 5px;
+  }
+
+
+  .project-tech > span {
+    gap: 5px;
+
+    padding: 5px 7px;
+
+    font-size: 7px;
+  }
+
+
+  .project-tech > span i {
+    font-size: 12px;
+  }
+
+
+  .project-bottom {
+    margin-top: 9px;
+
+    padding-top: 8px;
+  }
+
+
+  .project-category {
+    font-size: 7px;
+
+    letter-spacing: 1px;
+  }
+
+
+  .project-arrow {
+    width: 27px;
+    height: 27px;
+
+    font-size: 16px;
+  }
+
+
+  .projects-bottom {
+    gap: 7px;
+
+    margin-top: 11px;
+
+    font-size: 6px;
+
+    letter-spacing: 1px;
+  }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 560px) {
+
+  .projects-heading h2 {
+    font-size: 31px;
+  }
+
+
+  .projects-heading {
+    margin-top: 10px;
+  }
+
+
+  .project-note {
+    font-size: 15px;
+  }
+
+
+  .project-card {
+    grid-template-columns: 78px 1fr;
+
+    gap: 12px;
+
+    padding: 11px 0;
+  }
+
+
+  .project-visual {
+    min-height: 100px;
+  }
+
+
+  .project-logo-box {
+    width: 65px;
+    height: 65px;
+
+    padding: 7px;
+
+    border-radius: 9px;
+  }
+
+
+  .project-number {
+    font-size: 7px;
+  }
+
+
+  .project-meta {
+    margin-bottom: 3px;
+  }
+
+
+  .project-meta > span {
+    font-size: 6px;
+
+    letter-spacing: 0.7px;
+  }
+
+
+  .project-meta small {
+    font-size: 7px;
+  }
+
+
+  .project-info h3 {
+    font-size: 19px;
+  }
+
+
+  .project-info > p {
+    font-size: 9px;
+
+    line-height: 1.45;
+
+    margin: 5px 0 7px;
+  }
+
+
+  .project-tech {
+    gap: 4px;
+  }
+
+
+  .project-tech > span {
+    padding: 3px 5px;
+
+    font-size: 6px;
+  }
+
+
+  .project-tech > span i {
+    font-size: 9px;
+  }
+
+
+  .project-bottom {
+    margin-top: 7px;
+
+    padding-top: 6px;
+  }
+
+
+  .project-category {
+    font-size: 5.5px;
+  }
+
+
+  .project-arrow {
+    width: 23px;
+    height: 23px;
+
+    font-size: 13px;
+  }
+
+
+  .projects-bottom {
+    font-size: 5.5px;
+  }
+
+}
+/* =========================================================
+   PROJECTS PAGE — OPTION 3
+   VISUAL + OVERLAY SINGLE PAGE
+   ========================================================= */
+
+/* Main page */
+.projects-page {
+  overflow: hidden;
+}
+
+.projects-page .page-inner {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* =========================================================
+   PROJECT HEADER
+   ========================================================= */
+
+.projects-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  margin-top: 12px;
+  margin-bottom: 14px;
+}
+
+.projects-title-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.projects-eyebrow {
+  margin: 0 0 3px;
+
+  font-size: 10px;
+  font-weight: 700;
+
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+
+  color: #a87318;
+}
+
+.projects-heading h2 {
+  margin: 0;
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: 42px;
+  line-height: 0.95;
+
+  font-weight: 700;
+
+  letter-spacing: -1.5px;
+
+  color: #30271f;
+}
+
+.projects-subtitle {
+  margin: 5px 0 0;
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: 13px;
+
+  color: #756653;
+}
+
+
+/* =========================================================
+   HANDWRITTEN NOTE
+   ========================================================= */
+
+.projects-hand-note {
+  position: relative;
+
+  margin-right: 18px;
+  margin-top: 2px;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: flex-start;
+
+  font-family: "Caveat", cursive;
+
+  font-size: 23px;
+  line-height: 0.8;
+
+  color: #756653;
+
+  transform: rotate(-5deg);
+}
+
+.projects-hand-note span:nth-child(2) {
+  margin-left: 15px;
+}
+
+.projects-hand-note span:nth-child(3) {
+  margin-left: 5px;
+}
+
+.projects-note-arrow {
+  position: absolute;
+
+  left: -30px;
+  bottom: -10px;
+
+  font-family: Arial, sans-serif;
+
+  font-size: 27px;
+
+  transform: rotate(20deg);
+}
+
+
+/* =========================================================
+   PROJECT GRID
+   ========================================================= */
+
+.projects-visual-grid {
+  flex: 1;
+
+  min-height: 0;
+
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 14px;
+
+  margin-top: 2px;
+}
+
+
+/* =========================================================
+   PROJECT CARD
+   ========================================================= */
+
+.project-visual-card {
+  min-width: 0;
+  min-height: 0;
+
+  height: 100%;
+
+  position: relative;
+}
+
+
+/* =========================================================
+   PROJECT IMAGE CONTAINER
+   ========================================================= */
+
+.project-image-wrap {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  min-height: 0;
+
+  overflow: hidden;
+
+  border-radius: 8px;
+
+  background: #30271f;
+
+  border: 1px solid rgba(82, 64, 43, 0.25);
+
+  box-shadow:
+    0 7px 18px rgba(57, 43, 29, 0.14);
+
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+
+/* Individual card rotations */
+
+.project-visual-card:nth-child(1)
+.project-image-wrap {
+  transform: rotate(-0.8deg);
+}
+
+.project-visual-card:nth-child(2)
+.project-image-wrap {
+  transform: rotate(0.4deg);
+}
+
+.project-visual-card:nth-child(3)
+.project-image-wrap {
+  transform: rotate(0.9deg);
+}
+
+
+/* Hover */
+
+.project-visual-card:hover .project-image-wrap {
+  transform:
+    translateY(-5px)
+    rotate(0deg);
+
+  box-shadow:
+    0 15px 30px rgba(57, 43, 29, 0.22);
+}
+
+
+/* =========================================================
+   PROJECT IMAGE
+   ========================================================= */
+
+.project-image {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+
+  transition:
+    transform 0.5s ease;
+}
+
+.project-visual-card:hover .project-image {
+  transform: scale(1.06);
+}
+
+
+/* =========================================================
+   DARK IMAGE OVERLAY
+   ========================================================= */
+
+.project-overlay {
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(20, 17, 14, 0.05) 0%,
+      rgba(20, 17, 14, 0.08) 25%,
+      rgba(20, 17, 14, 0.45) 55%,
+      rgba(20, 17, 14, 0.92) 100%
+    );
+}
+
+
+/* =========================================================
+   PROJECT NUMBER
+   ========================================================= */
+
+.project-big-number {
+  position: absolute;
+
+  top: 12px;
+  right: 12px;
+
+  z-index: 3;
+
+  font-family: "Courier New", monospace;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  color: #fff;
+
+  letter-spacing: 1px;
+
+  padding: 5px 7px;
+
+  border: 1px solid rgba(255, 255, 255, 0.45);
+
+  border-radius: 4px;
+
+  background: rgba(0, 0, 0, 0.18);
+
+  backdrop-filter: blur(4px);
+}
+
+
+/* =========================================================
+   OVERLAY CONTENT
+   ========================================================= */
+
+.project-overlay-content {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 2;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: space-between;
+
+  padding: 14px;
+}
+
+
+/* =========================================================
+   TOP CONTENT
+   ========================================================= */
+
+.project-overlay-top {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  padding-right: 38px;
+}
+
+.project-overlay-top > span:first-child {
+  font-family: "Courier New", monospace;
+
+  font-size: 8px;
+
+  font-weight: 700;
+
+  letter-spacing: 1.3px;
+
+  color: rgba(255, 255, 255, 0.82);
+
+  text-transform: uppercase;
+}
+
+
+/* =========================================================
+   PROJECT ARROW
+   ========================================================= */
+
+.project-arrow {
+  width: 28px;
+  height: 28px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(255, 255, 255, 0.5);
+
+  border-radius: 50%;
+
+  font-family: Arial, sans-serif;
+
+  font-size: 16px;
+
+  color: white;
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease;
+}
+
+.project-visual-card:hover .project-arrow {
+  transform: translate(3px, -3px);
+
+  background: rgba(255, 255, 255, 0.15);
+}
+
+
+/* =========================================================
+   BOTTOM CONTENT
+   ========================================================= */
+
+.project-overlay-bottom {
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: flex-end;
+}
+
+
+/* =========================================================
+   PROJECT TITLE
+   ========================================================= */
+
+.project-overlay-bottom h3 {
+  margin: 0 0 5px;
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: 26px;
+
+  line-height: 1;
+
+  font-weight: 700;
+
+  letter-spacing: -0.5px;
+
+  color: #fff;
+}
+
+
+/* =========================================================
+   PROJECT DESCRIPTION
+   ========================================================= */
+
+.project-overlay-bottom p {
+  margin: 0 0 9px;
+
+  font-size: 10px;
+
+  line-height: 1.45;
+
+  color: rgba(255, 255, 255, 0.84);
+
+  display: -webkit-box;
+
+  -webkit-line-clamp: 4;
+
+  -webkit-box-orient: vertical;
+
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   TECHNOLOGY ICONS
+   ========================================================= */
+
+.project-tech-icons {
+  display: flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  flex-wrap: wrap;
+
+  padding-top: 7px;
+
+  border-top:
+    1px solid rgba(255, 255, 255, 0.25);
+}
+
+
+.project-tech-item {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 4px;
+}
+
+
+.project-tech-item i {
+  font-size: 16px;
+
+  line-height: 1;
+}
+
+
+.project-tech-item small {
+  font-family: "Courier New", monospace;
+
+  font-size: 7px;
+
+  font-weight: 700;
+
+  color: rgba(255, 255, 255, 0.82);
+}
+
+
+/* =========================================================
+   PROJECTS BOTTOM FOOTER
+   ========================================================= */
+
+.projects-bottom {
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  margin-top: 10px;
+
+  font-family: "Courier New", monospace;
+
+  font-size: 7px;
+
+  font-weight: 700;
+
+  letter-spacing: 1.5px;
+
+  color: #88745e;
+}
+
+
+.projects-bottom div {
+  height: 1px;
+
+  flex: 1;
+
+  background:
+    rgba(82, 64, 43, 0.20);
+}
+
+
+.projects-bottom p {
+  margin: 0;
+
+  white-space: nowrap;
+}
+
+
+.projects-bottom span {
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   RESPONSIVE — TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  .projects-heading h2 {
+    font-size: 38px;
+  }
+
+  .projects-visual-grid {
+    gap: 10px;
+  }
+
+  .project-overlay-content {
+    padding: 11px;
+  }
+
+  .project-overlay-bottom h3 {
+    font-size: 22px;
+  }
+
+  .project-overlay-bottom p {
+    font-size: 9px;
+  }
+
+  .project-tech-item i {
+    font-size: 14px;
+  }
+
+  .project-tech-item small {
+    display: none;
+  }
+}
+
+
+/* =========================================================
+   RESPONSIVE — MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+  .projects-page {
+    overflow-y: auto;
+  }
+
+  .projects-page .page-inner {
+    height: auto;
+  }
+
+  .projects-visual-grid {
+    grid-template-columns: 1fr;
+
+    height: auto;
+
+    flex: none;
+  }
+
+  .project-visual-card {
+    height: 360px;
+  }
+
+  .projects-heading {
+    margin-bottom: 16px;
+  }
+}
+
+
+/* =========================================================
+   RESPONSIVE — SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 500px) {
+
+  .projects-heading h2 {
+    font-size: 34px;
+  }
+
+  .projects-hand-note {
+    font-size: 18px;
+  }
+
+  .project-visual-card {
+    height: 330px;
+  }
+
+  .project-overlay-bottom h3 {
+    font-size: 24px;
+  }
+
+  .project-overlay-bottom p {
+    font-size: 10px;
+  }
+}
+/* =========================================================
+   PROJECTS PAGE — OPTION 3
+   LARGER TYPOGRAPHY VERSION
+   ========================================================= */
+
+.projects-page {
+  overflow: hidden;
+}
+
+.projects-page .page-inner {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* =========================================================
+   PROJECT HEADER
+   ========================================================= */
+
+.projects-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  margin-top: 12px;
+  margin-bottom: 14px;
+}
+
+.projects-title-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.projects-eyebrow {
+  margin: 0 0 4px;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+
+  color: #a87318;
+}
+
+.projects-heading h2 {
+  margin: 0;
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: 46px;
+  line-height: 0.95;
+
+  font-weight: 700;
+
+  letter-spacing: -1.5px;
+
+  color: #30271f;
+}
+
+.projects-subtitle {
+  margin: 6px 0 0;
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: 15px;
+
+  color: #756653;
+}
+
+
+/* =========================================================
+   HANDWRITTEN NOTE
+   ========================================================= */
+
+.projects-hand-note {
+  position: relative;
+
+  margin-right: 18px;
+  margin-top: 2px;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: flex-start;
+
+  font-family: "Caveat", cursive;
+
+  font-size: 25px;
+  line-height: 0.85;
+
+  color: #756653;
+
+  transform: rotate(-5deg);
+}
+
+.projects-hand-note span:nth-child(2) {
+  margin-left: 15px;
+}
+
+.projects-hand-note span:nth-child(3) {
+  margin-left: 5px;
+}
+
+.projects-note-arrow {
+  position: absolute;
+
+  left: -30px;
+  bottom: -10px;
+
+  font-family: Arial, sans-serif;
+
+  font-size: 28px;
+
+  transform: rotate(20deg);
+}
+
+
+/* =========================================================
+   PROJECT GRID
+   ========================================================= */
+
+.projects-visual-grid {
+  flex: 1;
+
+  min-height: 0;
+
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 16px;
+
+  margin-top: 3px;
+}
+
+
+/* =========================================================
+   PROJECT CARD
+   ========================================================= */
+
+.project-visual-card {
+  min-width: 0;
+  min-height: 0;
+
+  height: 100%;
+
+  position: relative;
+}
+
+
+/* =========================================================
+   PROJECT IMAGE
+   ========================================================= */
+
+.project-image-wrap {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  min-height: 0;
+
+  overflow: hidden;
+
+  border-radius: 9px;
+
+  background: #30271f;
+
+  border: 1px solid rgba(82, 64, 43, 0.25);
+
+  box-shadow:
+    0 7px 18px rgba(57, 43, 29, 0.14);
+
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+}
+
+
+/* Card rotation */
+
+.project-visual-card:nth-child(1)
+.project-image-wrap {
+  transform: rotate(-0.8deg);
+}
+
+.project-visual-card:nth-child(2)
+.project-image-wrap {
+  transform: rotate(0.4deg);
+}
+
+.project-visual-card:nth-child(3)
+.project-image-wrap {
+  transform: rotate(0.9deg);
+}
+
+
+/* Hover */
+
+.project-visual-card:hover .project-image-wrap {
+  transform:
+    translateY(-5px)
+    rotate(0deg);
+
+  box-shadow:
+    0 15px 30px rgba(57, 43, 29, 0.22);
+}
+
+
+/* =========================================================
+   IMAGE
+   ========================================================= */
+
+.project-image {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+
+  transition:
+    transform 0.5s ease;
+}
+
+.project-visual-card:hover .project-image {
+  transform: scale(1.06);
+}
+
+
+/* =========================================================
+   DARK OVERLAY
+   ========================================================= */
+
+.project-overlay {
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(20, 17, 14, 0.03) 0%,
+      rgba(20, 17, 14, 0.06) 20%,
+      rgba(20, 17, 14, 0.40) 48%,
+      rgba(20, 17, 14, 0.94) 100%
+    );
+}
+
+
+/* =========================================================
+   NUMBER
+   ========================================================= */
+
+.project-big-number {
+  position: absolute;
+
+  top: 13px;
+  right: 13px;
+
+  z-index: 3;
+
+  font-family: "Courier New", monospace;
+
+  font-size: 13px;
+
+  font-weight: 700;
+
+  color: #fff;
+
+  letter-spacing: 1px;
+
+  padding: 6px 8px;
+
+  border: 1px solid rgba(255, 255, 255, 0.5);
+
+  border-radius: 4px;
+
+  background: rgba(0, 0, 0, 0.20);
+
+  backdrop-filter: blur(4px);
+}
+
+
+/* =========================================================
+   OVERLAY CONTENT
+   ========================================================= */
+
+.project-overlay-content {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 2;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: space-between;
+
+  padding: 17px;
+}
+
+
+/* =========================================================
+   TOP CONTENT
+   ========================================================= */
+
+.project-overlay-top {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  padding-right: 42px;
+}
+
+.project-overlay-top > span:first-child {
+  font-family: "Courier New", monospace;
+
+  font-size: 9px;
+
+  font-weight: 700;
+
+  letter-spacing: 1.4px;
+
+  color: rgba(255, 255, 255, 0.88);
+
+  text-transform: uppercase;
+}
+
+
+/* =========================================================
+   ARROW
+   ========================================================= */
+
+.project-arrow {
+  width: 31px;
+  height: 31px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(255, 255, 255, 0.55);
+
+  border-radius: 50%;
+
+  font-family: Arial, sans-serif;
+
+  font-size: 18px;
+
+  color: white;
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease;
+}
+
+.project-visual-card:hover .project-arrow {
+  transform: translate(3px, -3px);
+
+  background: rgba(255, 255, 255, 0.15);
+}
+
+
+/* =========================================================
+   BOTTOM CONTENT
+   ========================================================= */
+
+.project-overlay-bottom {
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: flex-end;
+}
+
+
+/* =========================================================
+   PROJECT TITLE — BIGGER
+   ========================================================= */
+
+.project-overlay-bottom h3 {
+  margin: 0 0 8px;
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: 31px;
+
+  line-height: 1;
+
+  font-weight: 700;
+
+  letter-spacing: -0.6px;
+
+  color: #fff;
+}
+
+
+/* =========================================================
+   DESCRIPTION — BIGGER
+   ========================================================= */
+
+.project-overlay-bottom p {
+  margin: 0 0 12px;
+
+  font-size: 12px;
+
+  line-height: 1.5;
+
+  color: rgba(255, 255, 255, 0.90);
+
+  display: -webkit-box;
+
+  -webkit-line-clamp: 4;
+
+  -webkit-box-orient: vertical;
+
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   TECH STACK — BIGGER
+   ========================================================= */
+
+.project-tech-icons {
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  flex-wrap: wrap;
+
+  padding-top: 9px;
+
+  border-top:
+    1px solid rgba(255, 255, 255, 0.30);
+}
+
+
+/* Each technology */
+
+.project-tech-item {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 5px;
+
+  padding: 3px 0;
+}
+
+
+/* Technology logo */
+
+.project-tech-item i {
+  font-size: 21px;
+
+  line-height: 1;
+}
+
+
+/* Technology name */
+
+.project-tech-item small {
+  font-family: "Courier New", monospace;
+
+  font-size: 9px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.2px;
+
+  color: rgba(255, 255, 255, 0.92);
+}
+
+
+/* =========================================================
+   PROJECT FOOTER
+   ========================================================= */
+
+.projects-bottom {
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  margin-top: 11px;
+
+  font-family: "Courier New", monospace;
+
+  font-size: 8px;
+
+  font-weight: 700;
+
+  letter-spacing: 1.5px;
+
+  color: #88745e;
+}
+
+.projects-bottom div {
+  height: 1px;
+
+  flex: 1;
+
+  background:
+    rgba(82, 64, 43, 0.20);
+}
+
+.projects-bottom p {
+  margin: 0;
+
+  white-space: nowrap;
+}
+
+.projects-bottom span {
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  .projects-heading h2 {
+    font-size: 40px;
+  }
+
+  .projects-visual-grid {
+    gap: 11px;
+  }
+
+  .project-overlay-content {
+    padding: 12px;
+  }
+
+  .project-overlay-bottom h3 {
+    font-size: 25px;
+  }
+
+  .project-overlay-bottom p {
+    font-size: 10px;
+  }
+
+  .project-tech-icons {
+    gap: 6px;
+  }
+
+  .project-tech-item i {
+    font-size: 17px;
+  }
+
+  .project-tech-item small {
+    font-size: 8px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+  .projects-page {
+    overflow-y: auto;
+  }
+
+  .projects-page .page-inner {
+    height: auto;
+  }
+
+  .projects-visual-grid {
+    grid-template-columns: 1fr;
+
+    height: auto;
+
+    flex: none;
+  }
+
+  .project-visual-card {
+    height: 360px;
+  }
+
+  .projects-heading {
+    margin-bottom: 16px;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 500px) {
+
+  .projects-heading h2 {
+    font-size: 36px;
+  }
+
+  .projects-hand-note {
+    font-size: 19px;
+  }
+
+  .project-visual-card {
+    height: 330px;
+  }
+
+  .project-overlay-bottom h3 {
+    font-size: 27px;
+  }
+
+  .project-overlay-bottom p {
+    font-size: 11px;
+  }
+
+  .project-tech-item i {
+    font-size: 18px;
+  }
+
+  .project-tech-item small {
+    font-size: 8px;
+  }
+}
+/* =========================================================
+   ACHIEVEMENTS PAGE
+   ========================================================= */
+
+.achievements-page {
+  overflow: hidden;
+}
+
+.achievements-page .page-inner {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* =========================================================
+   ACHIEVEMENT HEADER
+   ========================================================= */
+
+.achievements-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  margin-top: 12px;
+  margin-bottom: 16px;
+}
+
+.achievements-title-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.achievements-eyebrow {
+  margin: 0 0 4px;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  letter-spacing: 2.5px;
+
+  text-transform: uppercase;
+
+  color: #a87318;
+}
+
+.achievements-heading h2 {
+  margin: 0;
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: 52px;
+
+  line-height: 0.95;
+
+  font-weight: 700;
+
+  letter-spacing: -2px;
+
+  color: #30271f;
+}
+
+.achievements-subtitle {
+  max-width: 620px;
+
+  margin: 8px 0 0;
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: 16px;
+
+  line-height: 1.35;
+
+  color: #665648;
+}
+
+
+/* =========================================================
+   HANDWRITTEN NOTE
+   ========================================================= */
+
+.achievements-hand-note {
+  position: relative;
+
+  margin-right: 20px;
+  margin-top: 3px;
+
+  display: flex;
+  flex-direction: column;
+
+  font-family: "Caveat", cursive;
+
+  font-size: 28px;
+
+  line-height: 0.85;
+
+  color: #594633;
+
+  transform: rotate(-5deg);
+}
+
+.achievements-hand-note span:nth-child(2) {
+  margin-left: 22px;
+}
+
+.achievements-hand-note span:nth-child(3) {
+  margin-left: 10px;
+}
+
+.achievement-note-star {
+  position: absolute;
+
+  left: -30px;
+  bottom: 5px;
+
+  font-family: Georgia, serif;
+
+  font-size: 34px;
+
+  transform: rotate(15deg);
+}
+
+.achievement-note-arrow {
+  position: absolute;
+
+  left: 50px;
+  bottom: -45px;
+
+  font-family: Arial, sans-serif;
+
+  font-size: 35px;
+
+  transform: rotate(-20deg);
+}
+
+
+/* =========================================================
+   ACHIEVEMENT GRID
+   ========================================================= */
+
+.achievements-grid {
+  flex: 1;
+
+  min-height: 0;
+
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 16px;
+
+  margin-top: 4px;
+}
+
+
+/* =========================================================
+   ACHIEVEMENT CARD
+   ========================================================= */
+
+.achievement-card {
+  position: relative;
+
+  min-width: 0;
+
+  min-height: 0;
+
+  display: flex;
+
+  flex-direction: column;
+
+  background:
+    rgba(250, 244, 231, 0.94);
+
+  border: 1px solid rgba(82, 64, 43, 0.20);
+
+  border-radius: 9px;
+
+  overflow: hidden;
+
+  box-shadow:
+    0 7px 18px rgba(57, 43, 29, 0.10);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+
+/* Tape effect */
+
+.achievement-card::before {
+  content: "";
+
+  position: absolute;
+
+  z-index: 5;
+
+  top: -5px;
+  left: 32px;
+
+  width: 72px;
+  height: 25px;
+
+  background:
+    rgba(202, 170, 108, 0.58);
+
+  border:
+    1px solid rgba(142, 111, 56, 0.18);
+
+  transform: rotate(-3deg);
+
+  opacity: 0.9;
+}
+
+
+/* Different tape positions */
+
+.achievement-card:nth-child(2)::before {
+  left: 72px;
+
+  transform: rotate(2deg);
+}
+
+.achievement-card:nth-child(3)::before {
+  left: 55px;
+
+  transform: rotate(-2deg);
+}
+
+
+/* Hover */
+
+.achievement-card:hover {
+  transform: translateY(-6px);
+
+  box-shadow:
+    0 15px 30px rgba(57, 43, 29, 0.16);
+}
+
+
+/* =========================================================
+   ACHIEVEMENT IMAGE
+   ========================================================= */
+
+.achievement-image-wrap {
+  position: relative;
+
+  height: 190px;
+
+  margin: 14px 14px 0;
+
+  padding: 7px;
+
+  background: #fffdf8;
+
+  border: 1px solid rgba(82, 64, 43, 0.16);
+
+  box-shadow:
+    0 4px 10px rgba(57, 43, 29, 0.10);
+
+  overflow: hidden;
+
+  transform: rotate(-1deg);
+}
+
+.achievement-card:nth-child(2)
+.achievement-image-wrap {
+  transform: rotate(0.8deg);
+}
+
+.achievement-card:nth-child(3)
+.achievement-image-wrap {
+  transform: rotate(-1.2deg);
+}
+
+.achievement-image {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+}
+
+
+/* =========================================================
+   IMAGE NUMBER
+   ========================================================= */
+
+.achievement-number {
+  position: absolute;
+
+  top: 8px;
+  right: 9px;
+
+  font-family: Georgia, serif;
+
+  font-size: 25px;
+
+  line-height: 1;
+
+  color: #a87318;
+
+  background:
+    rgba(250, 244, 231, 0.90);
+
+  padding: 3px 6px;
+
+  border-radius: 3px;
+}
+
+
+/* =========================================================
+   CARD CONTENT
+   ========================================================= */
+
+.achievement-card-content {
+  position: relative;
+
+  flex: 1;
+
+  display: flex;
+
+  flex-direction: column;
+
+  padding: 13px 17px 13px;
+}
+
+
+/* =========================================================
+   ICON
+   ========================================================= */
+
+.achievement-icon {
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 7px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #b98220,
+      #8f5d13
+    );
+
+  color: #fff;
+
+  border-radius: 9px;
+
+  font-size: 21px;
+
+  box-shadow:
+    0 4px 9px rgba(126, 82, 16, 0.20);
+}
+
+
+/* =========================================================
+   TITLE
+   ========================================================= */
+
+.achievement-card-content h3 {
+  margin: 0;
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: 25px;
+
+  line-height: 1.05;
+
+  font-weight: 700;
+
+  letter-spacing: -0.5px;
+
+  color: #30271f;
+}
+
+
+/* =========================================================
+   DESCRIPTION
+   ========================================================= */
+
+.achievement-card-content p {
+  margin: 9px 0 0;
+
+  font-family: Georgia, "Times New Roman", serif;
+
+  font-size: 14px;
+
+  line-height: 1.45;
+
+  color: #665648;
+
+  max-width: 95%;
+}
+
+
+/* =========================================================
+   DIVIDER
+   ========================================================= */
+
+.achievement-divider {
+  width: 100%;
+
+  height: 1px;
+
+  margin-top: auto;
+  margin-bottom: 10px;
+
+  background:
+    rgba(82, 64, 43, 0.20);
+}
+
+
+/* =========================================================
+   TAGS
+   ========================================================= */
+
+.achievement-tags {
+  display: flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  flex-wrap: wrap;
+
+  padding-right: 35px;
+}
+
+.achievement-tags span {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 6px 10px;
+
+  border: 1px solid rgba(168, 115, 24, 0.38);
+
+  border-radius: 6px;
+
+  background:
+    rgba(168, 115, 24, 0.06);
+
+  font-family: "Courier New", monospace;
+
+  font-size: 9px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.6px;
+
+  color: #805719;
+}
+
+
+/* =========================================================
+   ARROW
+   ========================================================= */
+
+.achievement-arrow {
+  position: absolute;
+
+  right: 17px;
+  bottom: 11px;
+
+  width: 34px;
+  height: 34px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(168, 115, 24, 0.40);
+
+  border-radius: 50%;
+
+  font-size: 22px;
+
+  color: #9a6614;
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease;
+}
+
+.achievement-card:hover .achievement-arrow {
+  transform: translate(3px, -3px);
+
+  background:
+    rgba(168, 115, 24, 0.08);
+}
+
+
+/* =========================================================
+   BOTTOM
+   ========================================================= */
+
+.achievements-bottom {
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 13px;
+
+  margin-top: 12px;
+
+  padding-bottom: 3px;
+
+  font-family: "Courier New", monospace;
+
+  font-size: 8px;
+
+  font-weight: 700;
+
+  letter-spacing: 1.7px;
+
+  color: #806d58;
+}
+
+.achievements-bottom div {
+  flex: 1;
+
+  height: 1px;
+
+  background:
+    rgba(82, 64, 43, 0.20);
+}
+
+.achievements-bottom p {
+  margin: 0;
+
+  white-space: nowrap;
+}
+
+.achievements-bottom span {
+  font-size: 14px;
+
+  color: #a87318;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  .achievements-heading h2 {
+    font-size: 44px;
+  }
+
+  .achievements-subtitle {
+    font-size: 14px;
+  }
+
+  .achievements-grid {
+    gap: 10px;
+  }
+
+  .achievement-image-wrap {
+    height: 155px;
+  }
+
+  .achievement-card-content {
+    padding: 10px 12px;
+  }
+
+  .achievement-card-content h3 {
+    font-size: 21px;
+  }
+
+  .achievement-card-content p {
+    font-size: 12px;
+  }
+
+  .achievement-tags span {
+    font-size: 8px;
+    padding: 5px 7px;
+  }
+}
+
+
+@media (max-width: 700px) {
+
+  .achievements-page {
+    overflow-y: auto;
+  }
+
+  .achievements-page .page-inner {
+    height: auto;
+  }
+
+  .achievements-grid {
+    grid-template-columns: 1fr;
+
+    flex: none;
+  }
+
+  .achievement-card {
+    min-height: 470px;
+  }
+
+  .achievement-image-wrap {
+    height: 220px;
+  }
+
+  .achievements-hand-note {
+    display: none;
+  }
+
+  .achievements-heading h2 {
+    font-size: 42px;
+  }
+
+  .achievements-bottom p {
+    font-size: 7px;
+  }
+}
+/* =========================================================
+   CONTACT — FINAL NOTEBOOK PAGE
+   ========================================================= */
+
+.contact-page {
+  overflow: hidden;
+}
+
+.contact-page .page-inner {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* =========================================================
+   MAIN CONTACT AREA
+   ========================================================= */
+
+.contact-final {
+  flex: 1;
+
+  min-height: 0;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1.15fr)
+    minmax(360px, 0.85fr);
+
+  gap: 65px;
+
+  align-items: center;
+
+  padding:
+    10px 35px 0 45px;
+}
+
+
+/* =========================================================
+   LEFT SIDE
+   ========================================================= */
+
+.contact-main {
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+}
+
+.contact-eyebrow {
+  margin: 0 0 10px;
+
+  font-family: "Courier New", monospace;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  letter-spacing: 3px;
+
+  color: #a87318;
+}
+
+.contact-main h2 {
+  margin: 0;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 56px;
+
+  line-height: 0.98;
+
+  font-weight: 700;
+
+  letter-spacing: -2px;
+
+  color: #30271f;
+}
+
+.contact-main h2 span {
+  color: #a87318;
+
+  font-style: italic;
+}
+
+
+/* =========================================================
+   GOLD LINE
+   ========================================================= */
+
+.contact-gold-line {
+  width: 85px;
+
+  height: 3px;
+
+  margin:
+    20px 0 17px;
+
+  background: #a87318;
+}
+
+
+/* =========================================================
+   DESCRIPTION
+   ========================================================= */
+
+.contact-description {
+  max-width: 540px;
+
+  margin: 0 0 22px;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 16px;
+
+  line-height: 1.6;
+
+  color: #665648;
+}
+
+
+/* =========================================================
+   EMAIL BUTTON
+   ========================================================= */
+
+.contact-email-button {
+  width: fit-content;
+
+  min-width: 360px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 13px;
+
+  padding: 13px 15px;
+
+  text-decoration: none;
+
+  color: #30271f;
+
+  background:
+    rgba(250, 244, 231, 0.85);
+
+  border:
+    1px solid rgba(82, 64, 43, 0.22);
+
+  border-radius: 7px;
+
+  box-shadow:
+    0 5px 14px rgba(57, 43, 29, 0.08);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.contact-email-button:hover {
+  transform: translateY(-3px);
+
+  border-color:
+    rgba(168, 115, 24, 0.55);
+
+  box-shadow:
+    0 10px 22px rgba(57, 43, 29, 0.13);
+}
+
+
+/* Email icon */
+
+.email-button-icon {
+  width: 40px;
+  height: 40px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 6px;
+
+  background: #a87318;
+
+  color: white;
+}
+
+.email-button-icon svg {
+  width: 21px;
+  height: 21px;
+}
+
+
+/* Email text */
+
+.email-button-text {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 2px;
+
+  flex: 1;
+}
+
+.email-button-text small {
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size: 8px;
+
+  font-weight: 700;
+
+  letter-spacing: 1.5px;
+
+  color: #a87318;
+}
+
+.email-button-text strong {
+  font-size: 14px;
+
+  font-weight: 600;
+
+  color: #403429;
+}
+
+
+/* Email arrow */
+
+.email-arrow {
+  font-size: 24px;
+
+  color: #a87318;
+
+  transition:
+    transform 0.25s ease;
+}
+
+.contact-email-button:hover .email-arrow {
+  transform:
+    translate(3px, -3px);
+}
+
+
+/* =========================================================
+   RIGHT SIDE
+   ========================================================= */
+
+.contact-connect {
+  position: relative;
+
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 10px;
+
+  padding-top: 30px;
+}
+
+
+/* =========================================================
+   HANDWRITTEN NOTE
+   ========================================================= */
+
+.contact-note {
+  position: absolute;
+
+  right: 5px;
+  top: -5px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  font-family: "Caveat", cursive;
+
+  font-size: 24px;
+
+  line-height: 0.85;
+
+  color: #756653;
+
+  transform: rotate(-5deg);
+}
+
+.contact-note span:nth-child(2) {
+  margin-left: 18px;
+}
+
+
+/* =========================================================
+   SOCIAL CARDS
+   ========================================================= */
+
+.contact-social {
+  position: relative;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 15px;
+
+  min-height: 78px;
+
+  padding: 11px 13px;
+
+  text-decoration: none;
+
+  color: #30271f;
+
+  background:
+    rgba(250, 244, 231, 0.88);
+
+  border:
+    1px solid rgba(82, 64, 43, 0.20);
+
+  border-radius: 8px;
+
+  box-shadow:
+    0 5px 14px rgba(57, 43, 29, 0.07);
+
+  transition:
+    transform 0.28s ease,
+    box-shadow 0.28s ease,
+    border-color 0.28s ease;
+}
+
+.contact-social:hover {
+  transform:
+    translateX(5px);
+
+  border-color:
+    rgba(168, 115, 24, 0.45);
+
+  box-shadow:
+    0 9px 20px rgba(57, 43, 29, 0.12);
+}
+
+
+/* =========================================================
+   SOCIAL LOGOS
+   ========================================================= */
+
+.social-logo {
+  width: 48px;
+  height: 48px;
+
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 8px;
+
+  font-family: Arial, sans-serif;
+
+  font-size: 22px;
+
+  font-weight: 700;
+
+  transition:
+    transform 0.25s ease;
+}
+
+.contact-social:hover .social-logo {
+  transform: rotate(-4deg) scale(1.05);
+}
+
+
+/* LinkedIn */
+
+.linkedin-logo {
+  background: #0a66c2;
+
+  color: white;
+
+  font-size: 25px;
+
+  letter-spacing: -2px;
+}
+
+
+/* GitHub */
+
+.github-logo {
+  background: #24292f;
+
+  color: white;
+}
+
+.github-logo svg {
+  width: 27px;
+  height: 27px;
+}
+
+
+/* LeetCode */
+
+.leetcode-logo {
+  background: #f1eadc;
+
+  color: #a87318;
+
+  border:
+    1px solid rgba(168, 115, 24, 0.25);
+}
+
+.leetcode-logo svg {
+  width: 28px;
+  height: 28px;
+}
+
+
+/* =========================================================
+   SOCIAL CONTENT
+   ========================================================= */
+
+.social-content {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 2px;
+
+  min-width: 0;
+
+  flex: 1;
+}
+
+.social-content small {
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size: 8px;
+
+  font-weight: 700;
+
+  letter-spacing: 1.7px;
+
+  color: #a87318;
+}
+
+.social-content strong {
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 18px;
+
+  line-height: 1.1;
+
+  color: #30271f;
+}
+
+.social-content span {
+  font-size: 10px;
+
+  color: #88745e;
+}
+
+
+/* =========================================================
+   SOCIAL ARROW
+   ========================================================= */
+
+.social-arrow {
+  width: 30px;
+  height: 30px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border:
+    1px solid rgba(168, 115, 24, 0.35);
+
+  border-radius: 50%;
+
+  color: #a87318;
+
+  font-size: 18px;
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease;
+}
+
+.contact-social:hover .social-arrow {
+  transform:
+    translate(3px, -3px);
+
+  background:
+    rgba(168, 115, 24, 0.08);
+}
+
+
+/* =========================================================
+   CLOSING MESSAGE
+   ========================================================= */
+
+.contact-closing {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  margin:
+    8px 35px 0 45px;
+}
+
+.closing-line {
+  flex: 1;
+
+  height: 1px;
+
+  background:
+    rgba(82, 64, 43, 0.20);
+}
+
+.closing-content {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+}
+
+.closing-star {
+  color: #a87318;
+
+  font-size: 15px;
+}
+
+.closing-message {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  gap: 2px;
+}
+
+.closing-message p {
+  margin: 0;
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size: 8px;
+
+  font-weight: 700;
+
+  letter-spacing: 2px;
+
+  color: #756653;
+}
+
+.closing-message span {
+  font-family:
+    "Caveat",
+    cursive;
+
+  font-size: 18px;
+
+  color: #8a755d;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.contact-footer {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  margin:
+    8px 35px 5px 45px;
+
+  padding-top: 8px;
+
+  border-top:
+    1px solid rgba(82, 64, 43, 0.16);
+
+  font-family:
+    "Courier New",
+    monospace;
+
+  font-size: 7px;
+
+  font-weight: 700;
+
+  letter-spacing: 1.5px;
+
+  color: #88745e;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  .contact-final {
+    gap: 30px;
+
+    padding-left: 35px;
+    padding-right: 25px;
+  }
+
+  .contact-main h2 {
+    font-size: 46px;
+  }
+
+  .contact-description {
+    font-size: 14px;
+  }
+
+  .contact-email-button {
+    min-width: 320px;
+  }
+
+  .social-content strong {
+    font-size: 16px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+  .contact-page {
+    overflow-y: auto;
+  }
+
+  .contact-page .page-inner {
+    height: auto;
+  }
+
+  .contact-final {
+    grid-template-columns: 1fr;
+
+    gap: 35px;
+
+    padding:
+      25px 20px 10px 35px;
+  }
+
+  .contact-main h2 {
+    font-size: 43px;
+  }
+
+  .contact-connect {
+    padding-top: 25px;
+  }
+
+  .contact-note {
+    display: none;
+  }
+
+  .contact-email-button {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .contact-closing {
+    margin-left: 35px;
+    margin-right: 20px;
+  }
+
+  .contact-footer {
+    margin-left: 35px;
+    margin-right: 20px;
+  }
+}
+/* =========================================================
+   HOME PAGE — LARGER TYPOGRAPHY
+   ========================================================= */
+
+.home-page .eyebrow {
+  font-size: 14px;
+  letter-spacing: 3px;
+  font-weight: 700;
+}
+
+.home-page h1 {
+  font-size: 68px;
+  line-height: 0.95;
+  letter-spacing: -2.5px;
+  margin: 8px 0 12px;
+}
+
+.home-page .intro {
+  font-size: 17px;
+  line-height: 1.65;
+  max-width: 600px;
+}
+
+.home-page .mini-skills {
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.home-page .mini-skill {
+  padding: 9px 13px;
+  font-size: 13px;
+}
+
+.home-page .mini-skill-logo {
+  font-size: 19px;
+}
+
+.home-page .journey-button {
+  margin-top: 25px;
+  padding: 13px 18px;
+  font-size: 13px;
+}
+
+.home-page .side-note {
+  font-size: 25px;
+  line-height: 1.05;
+}
+
+.home-page .signature {
+  font-size: 25px;
+}
+
+.home-page .scroll-hint {
+  font-size: 10px;
+}
+
+
+/* =========================================================
+   HOME PAGE — TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  .home-page h1 {
+    font-size: 58px;
+  }
+
+  .home-page .intro {
+    font-size: 15px;
+  }
+
+  .home-page .eyebrow {
+    font-size: 12px;
+  }
+}
+
+
+/* =========================================================
+   HOME PAGE — MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+  .home-page h1 {
+    font-size: 48px;
+  }
+
+  .home-page .intro {
+    font-size: 14px;
+  }
+
+  .home-page .side-note {
+    font-size: 21px;
+  }
+
+  .home-page .mini-skill {
+    font-size: 12px;
+  }
+}
+/* =========================================================
+   NOTEBOOK BINDING — ALL PAGES
+   ========================================================= */
+
+.notebook-page {
+  position: relative;
+
+  /* Extra space for the binding */
+  padding-left: 38px;
+
+  /* Subtle inner shadow near binding */
+  background-image:
+    linear-gradient(
+      to right,
+      rgba(65, 45, 25, 0.10) 0px,
+      rgba(65, 45, 25, 0.035) 18px,
+      transparent 40px
+    );
+}
+
+
+/* =========================================================
+   SPIRAL / BINDING HOLES
+   ========================================================= */
+
+.notebook-page::before {
+  content: "";
+
+  position: absolute;
+
+  left: 8px;
+  top: 0;
+  bottom: 0;
+
+  width: 24px;
+
+  z-index: 50;
+
+  pointer-events: none;
+
+  background:
+    radial-gradient(
+      circle at center,
+      #4b3928 0px,
+      #4b3928 4px,
+      #8a7258 4.5px,
+      #8a7258 5px,
+      transparent 5.5px
+    );
+
+  background-size: 20px 38px;
+
+  background-repeat: repeat-y;
+
+  background-position:
+    center 10px;
+
+  filter:
+    drop-shadow(
+      1px 1px 1px rgba(0,0,0,0.18)
+    );
+}
+
+
+/* =========================================================
+   BINDING EDGE / PAPER INDENTATION
+   ========================================================= */
+
+.notebook-page::after {
+  content: "";
+
+  position: absolute;
+
+  left: 25px;
+  top: 0;
+  bottom: 0;
+
+  width: 2px;
+
+  z-index: 49;
+
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      to right,
+      rgba(75, 55, 35, 0.28),
+      rgba(75, 55, 35, 0.08)
+    );
+
+  box-shadow:
+    1px 0 2px rgba(255,255,255,0.5);
+}
+
+
+/* =========================================================
+   KEEP ALL PAGE CONTENT ABOVE THE BINDING
+   ========================================================= */
+
+.notebook-page .page-inner {
+  position: relative;
+
+  z-index: 2;
+}
+
+/* =========================================================
+   REAL SPIRAL NOTEBOOK BINDING
+   ========================================================= */
+
+.notebook-page {
+  position: relative;
+
+  /* Space for the spiral */
+  padding-left: 48px;
+
+  /* Subtle shadow where paper meets binding */
+  background-image:
+    linear-gradient(
+      to right,
+      rgba(45, 32, 20, 0.13) 0px,
+      rgba(45, 32, 20, 0.055) 22px,
+      transparent 48px
+    );
+}
+
+
+/* =========================================================
+   PUNCHED HOLES
+   ========================================================= */
+
+.notebook-page {
+  background-image:
+    radial-gradient(
+      ellipse 5px 3px at 25px 21px,
+      #514131 0%,
+      #514131 65%,
+      transparent 70%
+    ),
+    linear-gradient(
+      to right,
+      rgba(45, 32, 20, 0.12) 0px,
+      rgba(45, 32, 20, 0.045) 22px,
+      transparent 48px
+    );
+
+  background-size:
+    42px 42px,
+    100% 100%;
+
+  background-repeat:
+    repeat-y,
+    no-repeat;
+
+  background-position:
+    0 10px,
+    0 0;
+}
+
+
+/* =========================================================
+   ACTUAL SPIRAL COIL
+   ========================================================= */
+
+.notebook-page::before {
+  content: "";
+
+  position: absolute;
+
+  left: 3px;
+  top: 4px;
+  bottom: 4px;
+
+  width: 48px;
+
+  z-index: 50;
+
+  pointer-events: none;
+
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='42' viewBox='0 0 48 42'%3E%3Cellipse cx='27' cy='21' rx='22' ry='12' fill='none' stroke='%23171411' stroke-width='4'/%3E%3Cellipse cx='27' cy='21' rx='22' ry='12' fill='none' stroke='%23756858' stroke-width='1.2' opacity='.75'/%3E%3Cpath d='M7 14 C13 8 29 7 40 14' fill='none' stroke='%23ffffff' stroke-width='1.1' opacity='.45'/%3E%3C/svg%3E");
+
+  background-repeat: repeat-y;
+
+  background-size: 48px 42px;
+
+  filter:
+    drop-shadow(
+      1px 1px 1px rgba(0,0,0,0.25)
+    );
+}
+
+
+/* =========================================================
+   METAL / PAGE EDGE
+   ========================================================= */
+
+.notebook-page::after {
+  content: "";
+
+  position: absolute;
+
+  left: 24px;
+  top: 0;
+  bottom: 0;
+
+  width: 2px;
+
+  z-index: 49;
+
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      to right,
+      rgba(40,30,20,0.30),
+      rgba(255,255,255,0.35),
+      rgba(40,30,20,0.08)
+    );
+
+  box-shadow:
+    2px 0 3px rgba(0,0,0,0.08);
+}
+
+
+/* =========================================================
+   KEEP CONTENT ABOVE THE BINDING
+   ========================================================= */
+
+.notebook-page .page-inner {
+  position: relative;
+  z-index: 2;
+}
+/* =========================================================
+   REAL SPIRAL NOTEBOOK BINDING
+   MATCHES THE PROVIDED REFERENCE
+   ========================================================= */
+
+.notebook-page {
+  position: relative;
+  overflow: visible;
+
+  /* Keep content away from the binding */
+  padding-left: 72px;
+}
+
+
+/* =========================================================
+   SPIRAL WIRE
+   ========================================================= */
+
+.notebook-page::before {
+  content: "";
+
+  position: absolute;
+
+  left: -30px;
+  top: 0;
+  bottom: 0;
+
+  width: 100px;
+
+  z-index: 50;
+  pointer-events: none;
+
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='48' viewBox='0 0 100 48'%3E%3Cdefs%3E%3ClinearGradient id='wire' x1='0' y1='0' x2='1' y2='0'%3E%3Cstop offset='0%25' stop-color='%23030303'/%3E%3Cstop offset='25%25' stop-color='%23151515'/%3E%3Cstop offset='48%25' stop-color='%235f5f5f'/%3E%3Cstop offset='55%25' stop-color='%23202020'/%3E%3Cstop offset='78%25' stop-color='%23070707'/%3E%3Cstop offset='100%25' stop-color='%23010101'/%3E%3C/linearGradient%3E%3Cfilter id='shadow' x='-30%25' y='-30%25' width='170%25' height='170%25'%3E%3CfeDropShadow dx='1.5' dy='2' stdDeviation='1.2' flood-color='%23000000' flood-opacity='.55'/%3E%3C/filter%3E%3C/defs%3E%3C!-- rear vertical spine --%3E%3Crect x='66' y='0' width='7' height='48' rx='3.5' fill='%23070707' opacity='.95'/%3E%3Crect x='68' y='0' width='2' height='48' fill='%23707070' opacity='.55'/%3E%3C!-- shadow wire --%3E%3Cpath d='M70 3 C38 3 10 10 10 24 C10 38 38 45 70 45' fill='none' stroke='%23000000' stroke-width='9' stroke-linecap='round' filter='url(%23shadow)'/%3E%3C!-- main thick wire --%3E%3Cpath d='M70 3 C38 3 10 10 10 24 C10 38 38 45 70 45' fill='none' stroke='url(%23wire)' stroke-width='6' stroke-linecap='round'/%3E%3C!-- metal highlight --%3E%3Cpath d='M69 5 C40 5 14 11 14 24 C14 37 40 43 69 43' fill='none' stroke='%23ffffff' stroke-width='1.2' stroke-opacity='.35' stroke-linecap='round'/%3E%3C!-- paper-side connector --%3E%3Crect x='68' y='19' width='13' height='10' rx='2' fill='%23131313'/%3E%3Crect x='69' y='20' width='8' height='2' rx='1' fill='%23707070' opacity='.55'/%3E%3C/svg%3E");
+
+  background-repeat: repeat-y;
+  background-size: 100px 48px;
+
+  filter:
+    drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.35));
+}
+
+
+/* =========================================================
+   PAPER EDGE + PUNCH HOLES
+   ========================================================= */
+
+.notebook-page::after {
+  content: "";
+
+  position: absolute;
+
+  left: 43px;
+  top: 0;
+  bottom: 0;
+
+  width: 34px;
+
+  z-index: 60;
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      to right,
+      rgba(245, 239, 224, 0),
+      rgba(245, 239, 224, 0.65) 45%,
+      rgba(245, 239, 224, 1) 78%
+    );
+
+  box-shadow:
+    inset 8px 0 10px rgba(45, 32, 20, 0.07);
+}
+
+
+/* =========================================================
+   PAGE CONTENT
+   ========================================================= */
+
+.notebook-page .page-inner {
+  position: relative;
+  z-index: 100;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+  .notebook-page {
+    padding-left: 55px;
+  }
+
+  .notebook-page::before {
+    left: -24px;
+    width: 82px;
+    background-size: 82px 42px;
+  }
+
+  .notebook-page::after {
+    left: 38px;
+    width: 28px;
+  }
+}
+/* =========================================================
+   BOOK PAGE TURN
+   Bottom-right → Top-left
+   ========================================================= */
+
+.notebook {
+  position: relative;
+  perspective: 1800px;
+}
+
+
+/* Every page */
+
+.notebook-page {
+  position: relative;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+
+/* =========================================================
+   PAGE TURNING SHEET
+   ========================================================= */
+
+.page-turn-overlay {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: 500;
+
+  pointer-events: none;
+
+  transform-style: preserve-3d;
+
+  background:
+    linear-gradient(
+      135deg,
+      #eee5d3 0%,
+      #f7f1e5 48%,
+      #e0d3bc 100%
+    );
+
+  box-shadow:
+    0 10px 35px rgba(0, 0, 0, 0.18);
+
+  opacity: 0;
+
+  transform-origin: bottom right;
+
+  transform:
+    rotateY(0deg)
+    rotateX(0deg);
+
+  backface-visibility: hidden;
+}
+
+
+/* =========================================================
+   NEXT PAGE
+   Bottom-right corner starts turning
+   ========================================================= */
+
+.notebook-page.turn-next .page-turn-overlay {
+
+  opacity: 1;
+
+  animation:
+    pageTurnNext 900ms
+    cubic-bezier(.65, .05, .35, 1)
+    forwards;
+}
+
+
+/* =========================================================
+   PREVIOUS PAGE
+   Reverse movement
+   ========================================================= */
+
+.notebook-page.turn-prev .page-turn-overlay {
+
+  opacity: 1;
+
+  animation:
+    pageTurnPrev 900ms
+    cubic-bezier(.65, .05, .35, 1)
+    forwards;
+}
+
+
+/* =========================================================
+   NEXT
+   Bottom-right → Top-left
+   ========================================================= */
+
+@keyframes pageTurnNext {
+
+  0% {
+    opacity: 1;
+
+    transform:
+      rotateY(0deg)
+      rotateX(0deg)
+      translate3d(0, 0, 0);
+
+    clip-path:
+      polygon(
+        0 0,
+        100% 0,
+        100% 100%,
+        0 100%
+      );
+  }
+
+  20% {
+
+    transform:
+      rotateY(-12deg)
+      rotateX(3deg)
+      translate3d(-2%, -1%, 25px);
+
+    clip-path:
+      polygon(
+        0 0,
+        100% 0,
+        100% 100%,
+        35% 100%
+      );
+  }
+
+  45% {
+
+    transform:
+      rotateY(-42deg)
+      rotateX(7deg)
+      translate3d(-12%, -4%, 60px);
+
+    clip-path:
+      polygon(
+        0 0,
+        100% 0,
+        75% 100%,
+        10% 100%
+      );
+  }
+
+  70% {
+
+    transform:
+      rotateY(-78deg)
+      rotateX(12deg)
+      translate3d(-28%, -8%, 80px);
+
+    clip-path:
+      polygon(
+        0 0,
+        55% 0,
+        25% 100%,
+        0 100%
+      );
+  }
+
+  100% {
+
+    opacity: 0;
+
+    transform:
+      rotateY(-105deg)
+      rotateX(15deg)
+      translate3d(-42%, -12%, 100px);
+
+    clip-path:
+      polygon(
+        0 0,
+        0 0,
+        0 100%,
+        0 100%
+      );
+  }
+}
+
+
+/* =========================================================
+   PREVIOUS
+   ========================================================= */
+
+@keyframes pageTurnPrev {
+
+  0% {
+    opacity: 1;
+
+    transform:
+      rotateY(105deg)
+      rotateX(15deg)
+      translate3d(-42%, -12%, 100px);
+  }
+
+  30% {
+
+    transform:
+      rotateY(70deg)
+      rotateX(10deg)
+      translate3d(-20%, -7%, 70px);
+  }
+
+  55% {
+
+    transform:
+      rotateY(35deg)
+      rotateX(6deg)
+      translate3d(-8%, -3%, 45px);
+  }
+
+  80% {
+
+    transform:
+      rotateY(10deg)
+      rotateX(2deg)
+      translate3d(-2%, -1%, 20px);
+  }
+
+  100% {
+
+    opacity: 0;
+
+    transform:
+      rotateY(0deg)
+      rotateX(0deg)
+      translate3d(0, 0, 0);
+  }
+}
+
+
+/* =========================================================
+   PAGE SHADOW DURING TURN
+   ========================================================= */
+
+.notebook-page.turn-next::after,
+.notebook-page.turn-prev::after {
+
+  box-shadow:
+    10px 15px 35px rgba(0, 0, 0, 0.25);
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+  .page-turn-overlay {
+    display: none;
+  }
+}
+/* =========================================================
+   PHYSICAL BOOK PAGE TURN
+   ========================================================= */
+
+.notebook-scroll {
+  position: relative;
+  perspective: 1800px;
+  transform-style: preserve-3d;
+}
+
+
+/* =========================================================
+   TURNING PAPER
+   ========================================================= */
+
+.book-page-turn {
+  position: sticky;
+
+  top: 0;
+
+  width: 100%;
+  height: 100vh;
+
+  margin-top: -100vh;
+
+  z-index: 9999;
+
+  pointer-events: none;
+
+  perspective: 1800px;
+  transform-style: preserve-3d;
+
+  overflow: visible;
+}
+
+
+/* =========================================================
+   PAPER
+   ========================================================= */
+
+.book-page-turn-paper {
+  position: absolute;
+
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  transform-style: preserve-3d;
+
+  transform-origin: 100% 100%;
+
+  backface-visibility: hidden;
+
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      135deg,
+      #f8f2e5 0%,
+      #eee5d4 65%,
+      #ded1ba 100%
+    );
+
+  box-shadow:
+    -18px 18px 35px rgba(30, 22, 14, 0.20),
+    0 4px 12px rgba(30, 22, 14, 0.12);
+
+  will-change:
+    transform,
+    clip-path,
+    box-shadow;
+}
+
+
+/* =========================================================
+   NEXT PAGE
+   BOTTOM-RIGHT → TOP-LEFT
+   ========================================================= */
+
+.book-page-turn-next
+.book-page-turn-paper {
+
+  animation:
+    physicalPageNext
+    1100ms
+    cubic-bezier(.65, .02, .22, 1)
+    forwards;
+}
+
+
+@keyframes physicalPageNext {
+
+  0% {
+
+    transform:
+      rotateY(0deg)
+      rotateX(0deg)
+      rotateZ(0deg)
+      translate3d(0, 0, 0);
+
+    clip-path:
+      polygon(
+        0 0,
+        100% 0,
+        100% 100%,
+        0 100%
+      );
+
+    box-shadow:
+      -5px 5px 10px rgba(0,0,0,.05);
+  }
+
+
+  20% {
+
+    transform:
+      rotateY(-18deg)
+      rotateX(4deg)
+      rotateZ(-1deg)
+      translate3d(-2%, -1%, 35px);
+
+    clip-path:
+      polygon(
+        0 0,
+        100% 0,
+        100% 100%,
+        72% 100%
+      );
+
+    box-shadow:
+      -12px 12px 25px rgba(0,0,0,.14);
+  }
+
+
+  40% {
+
+    transform:
+      rotateY(-40deg)
+      rotateX(8deg)
+      rotateZ(-2deg)
+      translate3d(-8%, -4%, 70px);
+
+    clip-path:
+      polygon(
+        0 0,
+        100% 0,
+        82% 100%,
+        42% 100%
+      );
+
+    box-shadow:
+      -20px 18px 32px rgba(0,0,0,.20);
+  }
+
+
+  60% {
+
+    transform:
+      rotateY(-65deg)
+      rotateX(12deg)
+      rotateZ(-3deg)
+      translate3d(-17%, -8%, 100px);
+
+    clip-path:
+      polygon(
+        0 0,
+        100% 0,
+        55% 100%,
+        18% 100%
+      );
+
+    box-shadow:
+      -28px 20px 40px rgba(0,0,0,.25);
+  }
+
+
+  78% {
+
+    transform:
+      rotateY(-82deg)
+      rotateX(15deg)
+      rotateZ(-4deg)
+      translate3d(-30%, -12%, 120px);
+
+    clip-path:
+      polygon(
+        0 0,
+        62% 0,
+        20% 100%,
+        0 100%
+      );
+
+    box-shadow:
+      -35px 22px 45px rgba(0,0,0,.28);
+  }
+
+
+  100% {
+
+    opacity: 0;
+
+    transform:
+      rotateY(-100deg)
+      rotateX(18deg)
+      rotateZ(-5deg)
+      translate3d(-48%, -18%, 140px);
+
+    clip-path:
+      polygon(
+        0 0,
+        0 0,
+        0 100%,
+        0 100%
+      );
+
+    box-shadow:
+      none;
+  }
+}
+
+
+/* =========================================================
+   PREVIOUS PAGE
+   ========================================================= */
+
+.book-page-turn-prev
+.book-page-turn-paper {
+
+  transform-origin: 0% 100%;
+
+  animation:
+    physicalPagePrev
+    1100ms
+    cubic-bezier(.65, .02, .22, 1)
+    forwards;
+}
+
+
+@keyframes physicalPagePrev {
+
+  0% {
+
+    transform:
+      rotateY(0deg)
+      rotateX(0deg)
+      rotateZ(0deg)
+      translate3d(0, 0, 0);
+
+    clip-path:
+      polygon(
+        0 0,
+        100% 0,
+        100% 100%,
+        0 100%
+      );
+  }
+
+
+  25% {
+
+    transform:
+      rotateY(18deg)
+      rotateX(4deg)
+      rotateZ(1deg)
+      translate3d(2%, -1%, 35px);
+
+    clip-path:
+      polygon(
+        0 0,
+        28% 100%,
+        100% 100%,
+        100% 0
+      );
+  }
+
+
+  50% {
+
+    transform:
+      rotateY(45deg)
+      rotateX(8deg)
+      rotateZ(2deg)
+      translate3d(9%, -4%, 70px);
+
+    clip-path:
+      polygon(
+        0 0,
+        48% 100%,
+        100% 100%,
+        100% 0
+      );
+  }
+
+
+  75% {
+
+    transform:
+      rotateY(75deg)
+      rotateX(13deg)
+      rotateZ(3deg)
+      translate3d(28%, -10%, 110px);
+
+    clip-path:
+      polygon(
+        0 0,
+        82% 100%,
+        100% 100%,
+        100% 0
+      );
+  }
+
+
+  100% {
+
+    opacity: 0;
+
+    transform:
+      rotateY(100deg)
+      rotateX(18deg)
+      rotateZ(5deg)
+      translate3d(48%, -18%, 140px);
+
+    clip-path:
+      polygon(
+        100% 0,
+        100% 0,
+        100% 100%,
+        100% 100%
+      );
+  }
+}
+
+
+/* =========================================================
+   PREVENT EXTRA SCROLLING DURING TURN
+   ========================================================= */
+
+.notebook-scroll.book-turn-next,
+.notebook-scroll.book-turn-prev {
+  overscroll-behavior: none;
+}
+.book-page-turn-next .book-page-turn-paper {
+  transform-origin: 0% 100%;
+  animation: yuvarajRealPagePrev 1050ms cubic-bezier(.72, 0, .18, 1) forwards;
+}
+.book-page-turn-next .book-page-turn-paper {
+  transform-origin: 0% 100%;
+  animation: yuvarajRealPagePrev 1050ms cubic-bezier(.72, 0, .18, 1) forwards;
+}
+
+.book-page-turn-prev .book-page-turn-paper {
+  transform-origin: 0% 100%;
+  animation: yuvarajRealPagePrev 1050ms cubic-bezier(.72, 0, .18, 1) forwards;
+}
+/* ================= HOME — LARGER TYPOGRAPHY ================= */
+
+.home-info .eyebrow {
+  font-size: 16px;
+  letter-spacing: 4px;
+}
+
+.home-info h1 {
+  font-size: clamp(64px, 5.2vw, 86px);
+  line-height: 1;
+  letter-spacing: -2px;
+}
+
+.home-info .intro {
+  font-size: 21px;
+  line-height: 1.7;
+  max-width: 720px;
+}
+
+.journey-button {
+  font-size: 17px;
+}
+/* ================= HOME TECH STACK — NO BOXES ================= */
+
+.plain-tech-stack {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  margin-top: 28px;
+  flex-wrap: wrap;
+}
+
+.plain-tech {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: transparent;
+  box-shadow: none;
+}
+
+.plain-tech i {
+  font-size: 27px;
+}
+
+.plain-tech span {
+  font-size: 16px;
+  font-weight: 600;
+  color: #5f5a52;
+}
+/* ================= ABOUT PAGE — LARGER TYPOGRAPHY ================= */
+
+.about-content h2 {
+  font-size: clamp(52px, 4.5vw, 72px);
+  line-height: 1.05;
+  letter-spacing: -1.5px;
+}
+
+.about-content > p {
+  font-size: 20px;
+  line-height: 1.7;
+  max-width: 700px;
+}
+
+.about-points {
+  margin-top: 32px;
+}
+
+.about-points .about-point h3 {
+  font-size: 20px;
+}
+
+.about-points .about-point p {
+  font-size: 16px;
+  line-height: 1.6;
+}
+.about-points .about-point {
+  border: none;
+  background: transparent;
+  box-shadow: none;
+  padding: 0;
+}
